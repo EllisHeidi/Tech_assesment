@@ -17,6 +17,8 @@ import beachCouple  from '../assets/images/Kingsley Website Images/reed-naliboff
 import surfer       from '../assets/images/Kingsley Website Images/michiel-annaert-fQEbXEPDYOE-unsplash.jpg';
 import whales       from '../assets/images/Kingsley Website Images/guille-pozzi-PO0UHx-5mHo-unsplash.jpg';
 import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Kingsley Village — Coastal Living, Palm Lakes">
@@ -58,7 +60,7 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
         <p class="reveal text-base leading-relaxed mb-10" style="color:#4A4A4A; max-width:46ch;">
           With 49 sectional title homes across 7 distinct unit types, every residence is designed to maximise natural light, indoor-outdoor flow, and the coastal lifestyle you've been working toward.
         </p>
-        <a href="/about" class="btn-dark reveal">Discover Our Vision</a>
+        <a href={`${base}about`} class="btn-dark reveal">Discover Our Vision</a>
       </div>
       <!-- Image -->
       <div class="reveal-right">
@@ -91,7 +93,7 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
       <p class="mb-8 text-base leading-relaxed" style="color:rgba(255,255,255,0.72); max-width:42ch;">
         Gather, unwind, and entertain in a beautifully landscaped setting designed for every age and lifestyle.
       </p>
-      <a href="/units" class="btn-primary">View All Homes</a>
+      <a href={`${base}units`} class="btn-primary">View All Homes</a>
     </div>
   </section>
 
@@ -144,7 +146,7 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
             Select Your Home
           </h2>
         </div>
-        <a href="/units" class="text-xs font-semibold tracking-widest uppercase border-b pb-0.5 transition-colors hover:text-[#D27A29]" style="color:#111; border-color:#111;">
+        <a href={`${base}units`} class="text-xs font-semibold tracking-widest uppercase border-b pb-0.5 transition-colors hover:text-[#D27A29]" style="color:#111; border-color:#111;">
           View All 7 Types →
         </a>
       </div>
@@ -180,7 +182,7 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
               <span>{u.garages} Garage</span>
               <span>{u.size} m²</span>
             </div>
-            <a href="/units" class="text-xs font-semibold tracking-widest uppercase border-b pb-0.5 transition-colors hover:text-[#D27A29]" style="color:#111; border-color:rgba(0,0,0,0.2);">
+            <a href={`${base}units`} class="text-xs font-semibold tracking-widest uppercase border-b pb-0.5 transition-colors hover:text-[#D27A29]" style="color:#111; border-color:rgba(0,0,0,0.2);">
               View Details →
             </a>
           </article>
@@ -228,7 +230,7 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
         <p class="reveal text-base leading-relaxed mb-8" style="color:#4A4A4A; max-width:44ch;">
           Sheffield Beach, Thompson Bay, and the broader Dolphin Coast are minutes from your front door. The North Coast's warm Indian Ocean waters and year-round subtropical climate make every day feel like a holiday.
         </p>
-        <a href="/location" class="btn-dark reveal">Explore the Location</a>
+        <a href={`${base}location`} class="btn-dark reveal">Explore the Location</a>
       </div>
     </div>
   </section>
@@ -244,10 +246,10 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[
-          { src:'/videos/Clip 01 - Street View.mp4',       label:'Street Arrival',         poster: gatehouse.src   },
-          { src:'/videos/Clip 02 - Garden View.mp4',       label:'Garden & Landscaping',   poster: unitArender.src },
-          { src:'/videos/Clip 03 - Clubhouse View.mp4',    label:'Clubhouse & Pool',        poster: clubhouse.src   },
-          { src:'/videos/Clip 04 - Living Room View.mp4',  label:'Living Room Interior',    poster: livingRoom.src  },
+          { src:`${base}videos/Clip 01 - Street View.mp4`,       label:'Street Arrival',         poster: gatehouse.src   },
+          { src:`${base}videos/Clip 02 - Garden View.mp4`,       label:'Garden & Landscaping',   poster: unitArender.src },
+          { src:`${base}videos/Clip 03 - Clubhouse View.mp4`,    label:'Clubhouse & Pool',        poster: clubhouse.src   },
+          { src:`${base}videos/Clip 04 - Living Room View.mp4`,  label:'Living Room Interior',    poster: livingRoom.src  },
         ].map(v => (
           <div class="reveal group relative overflow-hidden" style="background:rgba(0,0,0,0.2);">
             <video
@@ -313,8 +315,8 @@ import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.j
           The first 10 buyers receive an additional R100,000 discount on top of R100,000 in fees and levies already waived for all buyers.
         </p>
         <div class="flex flex-wrap gap-4 reveal">
-          <a href="/contact" class="btn-dark">Register Interest</a>
-          <a href="/invest"  class="btn-outline" style="color:#111; border-color:rgba(0,0,0,0.25);">Investment Details</a>
+          <a href={`${base}contact`} class="btn-dark">Register Interest</a>
+          <a href={`${base}invest`}  class="btn-outline" style="color:#111; border-color:rgba(0,0,0,0.25);">Investment Details</a>
         </div>
       </div>
       <div class="grid grid-cols-2 gap-4">

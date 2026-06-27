@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { type, beds, baths, garages, size, pricePerM2, totalPrice, features, highlight = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
 
 const formatPrice = (p: number) =>
   `R${(p / 1_000_000).toFixed(2)}M`;
@@ -82,7 +83,7 @@ const formatM2Price = (p: number) =>
 
     <!-- CTA -->
     <a
-      href="/contact"
+      href={`${base}contact`}
       class="block text-center py-3 rounded-xl font-semibold text-sm transition-all hover:scale-105"
       style={highlight ? 'background: #F8C16F; color: #113E61;' : 'background: #113E61; color: white;'}
     >

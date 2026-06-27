@@ -11,6 +11,7 @@ import bedroom  from '../assets/images/Still Renders/3D 15 - Bedroom Internal - 
 import club     from '../assets/images/Still Renders/3D 11 - Clubhouse - Exterior - No Logo.jpg';
 import sitePlan from '../assets/images/Marketing Plans/Site Plan.jpg';
 
+const base = import.meta.env.BASE_URL;
 const process = [
   { n:'01', t:'Choose Your Unit',       b:'Browse 7 unit types and select the home that fits your lifestyle and budget.' },
   { n:'02', t:'10% Deposit',             b:'Secure your preferred unit with a deposit to lock in your price.' },
@@ -110,7 +111,7 @@ const process = [
             <p class="text-sm">Sugar Boulevard, Palm Lakes, Dolphin Coast 4392</p>
           </div>
         </div>
-        <a href="/contact" class="btn-primary mt-10 inline-block">Get in Touch</a>
+        <a href={`${base}contact`} class="btn-primary mt-10 inline-block">Get in Touch</a>
       </div>
     </div>
   </section>
@@ -166,7 +167,7 @@ const process = [
         ))}
       </div>
       <div class="mt-14">
-        <a href="/contact" class="btn-primary">Begin Your Journey</a>
+        <a href={`${base}contact`} class="btn-primary">Begin Your Journey</a>
       </div>
     </div>
   </section>

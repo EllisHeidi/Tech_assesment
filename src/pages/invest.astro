@@ -8,6 +8,7 @@ import living   from '../assets/images/Still Renders/3D 14 - Living Room Interna
 import clubhouse from '../assets/images/Still Renders/3D 11 - Clubhouse - Exterior - No Logo.jpg';
 import unitB    from '../assets/images/Still Renders/3D 04 - Unit Type B - Exterior - No Logo.jpg';
 
+const base = import.meta.env.BASE_URL;
 const savings = [
   { item:'Transfer Duties',           typical:'~R55k – R110k', kingsley:'R0 — Waived' },
   { item:'Attorney Transfer Fees',    typical:'~R25k – R40k',  kingsley:'R0 — Waived' },
@@ -92,7 +93,7 @@ const savings = [
             </p>
           </div>
 
-          <a href="/contact" class="btn-primary w-full text-center block mt-8">Register Interest</a>
+          <a href={`${base}contact`} class="btn-primary w-full text-center block mt-8">Register Interest</a>
         </div>
 
         <!-- Buyer types -->
@@ -156,8 +157,8 @@ const savings = [
         Secure. Aspirational.<br/>Attainable.
       </h2>
       <div class="flex flex-wrap justify-center gap-4 mt-8">
-        <a href="/contact" class="btn-primary">Register Interest</a>
-        <a href="/units" class="btn-outline">View Unit Types</a>
+        <a href={`${base}contact`} class="btn-primary">Register Interest</a>
+        <a href={`${base}units`} class="btn-outline">View Unit Types</a>
       </div>
     </div>
   </section>

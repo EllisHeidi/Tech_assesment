@@ -1,6 +1,7 @@
 ---
 import logoGold from '../assets/logos/PNG/Asset 44@4x.png';
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
 ---
 
 <footer style="background: #005280; color: #ffffff;">
@@ -13,7 +14,7 @@ const year = new Date().getFullYear();
 
       <!-- Brand -->
       <div class="max-w-sm">
-        <a href="/">
+        <a href={base}>
           <img src={logoGold.src} alt="Kingsley Village" class="h-12 w-auto mb-8" />
         </a>
         <p class="text-sm leading-relaxed mb-7" style="color: rgba(255,255,255,0.55); max-width: 32ch;">
@@ -42,7 +43,7 @@ const year = new Date().getFullYear();
         <p class="text-sm mb-8" style="color: rgba(255,255,255,0.55);">
           R100k discount + R100k in transfer &amp; attorney fees waived.
         </p>
-        <a href="/contact" class="btn-primary w-full text-center block">Register Interest</a>
+        <a href={`${base}contact`} class="btn-primary w-full text-center block">Register Interest</a>
       </div>
     </div>
 
@@ -52,11 +53,11 @@ const year = new Date().getFullYear();
       <!-- Nav links -->
       <nav class="flex flex-wrap gap-x-10 gap-y-4">
         {[
-          { href: '/units',    label: 'Our Homes' },
-          { href: '/location', label: 'Location' },
-          { href: '/invest',   label: 'Investment' },
-          { href: '/about',    label: 'About' },
-          { href: '/contact',  label: 'Contact' },
+          { href: `${base}units`,    label: 'Our Homes' },
+          { href: `${base}location`, label: 'Location' },
+          { href: `${base}invest`,   label: 'Investment' },
+          { href: `${base}about`,    label: 'About' },
+          { href: `${base}contact`,  label: 'Contact' },
         ].map(({ href, label }) => (
           <a href={href} class="text-sm transition-colors hover:text-[#F8C16F]" style="color: rgba(255,255,255,0.55);">{label}</a>
         ))}

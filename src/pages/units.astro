@@ -17,49 +17,50 @@ import living    from '../assets/images/Still Renders/3D 14 - Living Room Intern
 import bedroom   from '../assets/images/Still Renders/3D 15 - Bedroom Internal - No Logo.jpg';
 import sitePlan  from '../assets/images/Marketing Plans/Site Plan.jpg';
 
+const base = import.meta.env.BASE_URL;
 const units = [
   {
     type:'A', beds:3, baths:2, garages:1, size:130, price:2_250_000,
     img: renderA, img2: renderA2,
     features:['Master ensuite','Open-plan living & dining','Covered patio','Private garden','Single garage'],
-    pdf:'/assets/images/Marketing Plans/Unit Type A.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type A.pdf`,
   },
   {
     type:'B', beds:3, baths:2, garages:2, size:155, price:2_750_000,
     img: renderB, img2: renderB2,
     features:['Double garage','Scullery','Master ensuite','Guest bathroom','Larger covered patio'],
-    pdf:'/assets/images/Marketing Plans/Unit Type B.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type B.pdf`,
     featured: true,
   },
   {
     type:'C', beds:3, baths:2, garages:1, size:140, price:2_500_000,
     img: renderCD, img2: renderCD2,
     features:['Corner unit position','Master ensuite','Courtyard garden','Open-plan kitchen','Single garage'],
-    pdf:'/assets/images/Marketing Plans/Unit Type C.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type C.pdf`,
   },
   {
     type:'D', beds:4, baths:3, garages:2, size:195, price:3_350_000,
     img: renderCD, img2: renderCD2,
     features:['4 bedrooms','Study nook','Scullery & pantry','Courtyard entertainment','2 en-suites'],
-    pdf:'/assets/images/Marketing Plans/Unit Type D.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type D.pdf`,
   },
   {
     type:'E', beds:3, baths:2, garages:1, size:148, price:2_550_000,
     img: renderE, img2: renderE,
     features:['End unit','Extra side yard','Master ensuite','Open kitchen with island','Garden room'],
-    pdf:'/assets/images/Marketing Plans/Unit Type E.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type E.pdf`,
   },
   {
     type:'F', beds:3, baths:2, garages:2, size:165, price:2_950_000,
     img: renderF, img2: renderF,
     features:['Double garage','Optional study/4th bed','Scullery','Large covered patio','Landscaped garden'],
-    pdf:'/assets/images/Marketing Plans/Unit Type F.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type F.pdf`,
   },
   {
     type:'G', beds:4, baths:3, garages:2, size:200, price:3_500_000,
     img: renderG, img2: renderG,
     features:['Largest unit type','Premium specification','3 full bathrooms','Chef kitchen layout','Entertainment deck'],
-    pdf:'/assets/images/Marketing Plans/Unit Type G.pdf',
+    pdf:`${base}assets/images/Marketing Plans/Unit Type G.pdf`,
   },
 ];
 
@@ -163,7 +164,7 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
 
             <!-- Actions -->
             <div class="flex flex-wrap gap-4">
-              <a href="/contact" class="btn-dark">Enquire Now</a>
+              <a href={`${base}contact`} class="btn-dark">Enquire Now</a>
               <a
                 href={u.pdf}
                 target="_blank"
@@ -270,7 +271,7 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
         <p class="mb-10 text-base leading-relaxed" style="color:rgba(255,255,255,0.6); max-width:44ch;">
           Every Kingsley home features marble countertops, timber joinery, brass fixture details, and large-format tiles throughout — delivered as standard, not as an upgrade.
         </p>
-        <a href="/contact" class="btn-primary">Book a Site Visit</a>
+        <a href={`${base}contact`} class="btn-primary">Book a Site Visit</a>
       </div>
     </div>
   </section>

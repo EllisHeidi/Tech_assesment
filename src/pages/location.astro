@@ -10,6 +10,7 @@ import surfer   from '../assets/images/Kingsley Website Images/michiel-annaert-f
 import whales   from '../assets/images/Kingsley Website Images/guille-pozzi-PO0UHx-5mHo-unsplash.jpg';
 import gate     from '../assets/images/Still Renders/3D 13 - Gatehhouse - Exterior - No Logo.jpg';
 
+const base = import.meta.env.BASE_URL;
 const distances = [
   { place:'Tinley Manor N2 Exit',      dist:'1 km'   },
   { place:'Sheffield Beach',           dist:'3 km'   },
@@ -161,7 +162,7 @@ const distances = [
         Made for Families
       </h2>
       <p class="mt-4 mb-8 text-base" style="color:rgba(255,255,255,0.72);">Safe, secure, and steps from the beach — a home your family will love for generations.</p>
-      <a href="/contact" class="btn-primary">Register Interest</a>
+      <a href={`${base}contact`} class="btn-primary">Register Interest</a>
     </div>
   </section>
 

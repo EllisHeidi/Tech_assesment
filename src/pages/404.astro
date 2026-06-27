@@ -4,6 +4,7 @@ import Nav     from '../components/Nav.astro';
 import Footer  from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import aerial from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Page Not Found — Kingsley Village">
@@ -21,8 +22,8 @@ import aerial from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
       <h1 class="text-3xl lg:text-5xl text-white -mt-8 mb-4" style="font-family:'Cormorant Garamond',serif;">Page Not Found</h1>
       <p class="mb-10 text-base" style="color:rgba(255,255,255,0.55);">This page has drifted out to sea. Let's get you back to shore.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/" class="btn-primary">Back to Home</a>
-        <a href="/contact" class="btn-outline">Contact Us</a>
+        <a href={base} class="btn-primary">Back to Home</a>
+        <a href={`${base}contact`} class="btn-outline">Contact Us</a>
       </div>
     </div>
   </section>
