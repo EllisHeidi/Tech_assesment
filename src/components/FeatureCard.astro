@@ -1,0 +1,24 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  delay?: number;
+}
+
+const { icon, title, description, delay = 0 } = Astro.props;
+---
+
+<div
+  class="gsap-fade-up feature-card group p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+  style={`background: #ffffff; border: 1px solid rgba(17,62,97,0.08); animation-delay: ${delay}ms;`}
+>
+  <div
+    class="w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+    style="background: rgba(0,82,128,0.08);"
+  >
+    <span class="text-2xl" set:html={icon} />
+  </div>
+  <h3 class="font-semibold text-lg mb-2" style="color: #113E61; font-family: 'Oswald', sans-serif;">{title}</h3>
+  <p class="text-sm leading-relaxed" style="color: #4a5568;">{description}</p>
+</div>

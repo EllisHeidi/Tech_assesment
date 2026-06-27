@@ -1,0 +1,126 @@
+---
+import logoGold from '../assets/logos/PNG/Asset 44@4x.png';
+
+const links = [
+  { href: '/',         label: 'Home' },
+  { href: '/units',    label: 'Units' },
+  { href: '/location', label: 'Location' },
+  { href: '/invest',   label: 'Invest' },
+  { href: '/about',    label: 'About' },
+  { href: '/contact',  label: 'Contact' },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header
+  id="site-nav"
+  class="fixed top-0 inset-x-0 z-50"
+  style="background: rgba(17,62,97,0); border-bottom: 1px solid rgba(255,255,255,0); transition: background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;"
+>
+  <div class="max-w-screen-xl mx-auto px-6 lg:px-12">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img
+          src={logoGold.src}
+          alt="Kingsley Village – Palm Lakes"
+          class="h-7 lg:h-8 w-auto"
+        />
+      </a>
+
+      <!-- Desktop links -->
+      <nav class="hidden lg:flex items-center gap-8">
+        {links.map(({ href, label }) => (
+          <a
+            href={href}
+            class={`text-xs font-medium tracking-widest uppercase transition-colors duration-200 ${
+              path === href
+                ? 'text-[#F8C16F]'
+                : 'text-white/60 hover:text-white'
+            }`}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop CTA -->
+      <a href="/contact" class="hidden lg:inline-block btn-primary text-xs">
+        Schedule a Viewing
+      </a>
+
+      <!-- Mobile toggle -->
+      <button
+        id="nav-toggle"
+        aria-label="Open menu"
+        class="lg:hidden p-2 text-white/70 hover:text-white"
+      >
+        <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div
+    id="mobile-drawer"
+    class="lg:hidden hidden"
+    style="background: #113E61; border-top: 1px solid rgba(255,255,255,0.08);"
+  >
+    <nav class="flex flex-col px-6 py-6 gap-1">
+      {links.map(({ href, label }) => (
+        <a
+          href={href}
+          class={`py-3 text-xs font-medium tracking-widest uppercase border-b transition-colors ${
+            path === href
+              ? 'text-[#F8C16F] border-[#F8C16F]/20'
+              : 'text-white/50 hover:text-white border-white/5'
+          }`}
+        >
+          {label}
+        </a>
+      ))}
+      <a href="/contact" class="btn-primary text-center mt-5 text-xs">Schedule a Viewing</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const nav    = document.getElementById('site-nav')!;
+  const toggle = document.getElementById('nav-toggle')!;
+
+  const setNav = () => {
+    if (window.scrollY > 40) {
+      nav.style.background = 'rgba(17,62,97,0.97)';
+      nav.style.backdropFilter = 'blur(12px)';
+      nav.style.borderColor = 'rgba(255,255,255,0.08)';
+    } else {
+      nav.style.background = 'rgba(17,62,97,0)';
+      nav.style.backdropFilter = 'none';
+      nav.style.borderColor = 'rgba(255,255,255,0)';
+    }
+  };
+  window.addEventListener('scroll', setNav, { passive: true });
+  setNav();
+  const drawer = document.getElementById('mobile-drawer')!;
+  const open   = document.getElementById('icon-open')!;
+  const close  = document.getElementById('icon-close')!;
+
+  // Mobile toggle
+  toggle.addEventListener('click', () => {
+    const isOpen = !drawer.classList.contains('hidden');
+    drawer.classList.toggle('hidden');
+    open.classList.toggle('hidden', !isOpen);
+    close.classList.toggle('hidden', isOpen);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      drawer.classList.add('hidden');
+      open.classList.remove('hidden');
+      close.classList.add('hidden');
+    }
+  });
+</script>

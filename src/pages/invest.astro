@@ -1,0 +1,206 @@
+---
+import Layout  from '../layouts/Layout.astro';
+import Nav     from '../components/Nav.astro';
+import Footer  from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import living   from '../assets/images/Still Renders/3D 14 - Living Room Internal - No Logo.jpg';
+import clubhouse from '../assets/images/Still Renders/3D 11 - Clubhouse - Exterior - No Logo.jpg';
+import unitB    from '../assets/images/Still Renders/3D 04 - Unit Type B - Exterior - No Logo.jpg';
+
+const savings = [
+  { item:'Transfer Duties',           typical:'~R55k – R110k', kingsley:'R0 — Waived' },
+  { item:'Attorney Transfer Fees',    typical:'~R25k – R40k',  kingsley:'R0 — Waived' },
+  { item:'Connection Fees',           typical:'~R15k – R25k',  kingsley:'R0 — Waived' },
+  { item:'Palm Lakes Stabilisation Levy', typical:'Ongoing',   kingsley:'R0 — Exempt' },
+  { item:'Early Bird Discount (first 10)',typical:'N/A',        kingsley:'+R100,000' },
+];
+---
+
+<Layout
+  title="Investment Opportunity — Kingsley Village"
+  description="Why invest in Kingsley Village? No transfer duties, no attorney fees, 10% capital appreciation, and holiday rental income on the KZN North Coast."
+>
+  <Nav />
+
+  <!-- Header over living room -->
+  <section class="relative h-[55vh] flex items-end overflow-hidden">
+    <Image
+      src={living}
+      alt="Kingsley Village luxury interior"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.05) 55%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 pb-16 w-full">
+      <p class="label mb-3" style="color:rgba(248,193,111,0.9);">Smart Investment</p>
+      <h1 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem);">
+        The Investment Case
+      </h1>
+    </div>
+  </section>
+
+  <!-- Intro + price card -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="reveal text-4xl lg:text-5xl mb-8" style="font-family:'Cormorant Garamond',serif; color:#111;">
+          Why Kingsley Delivers Returns
+        </h2>
+        <div class="space-y-8">
+          {[
+            { t:'Accessible Entry Point', b:'Quality sectional title homes from R2.25M — significantly below comparable Ballito developments, with far more to offer per rand spent.' },
+            { t:'Capital Appreciation Track Record', b:'The North Coast has recorded 10% annual appreciation in select developments, driven by constrained supply and surging demand from Gauteng and international buyers.' },
+            { t:'Strong Rental Yield Potential', b:'Over 1,400 holiday visitors pass through the Ballito–Salt Rock corridor monthly. Short-term holiday lets command premium nightly rates, especially in school holidays.' },
+            { t:'Sectional Title Security', b:'Professional body corporate management and no hidden maintenance costs make Kingsley ideal for hands-off investors and lock-up-and-go owners alike.' },
+          ].map(({ t, b }) => (
+            <div class="reveal pb-8" style="border-bottom:1px solid rgba(0,0,0,0.08);">
+              <h3 class="font-medium text-xl mb-3" style="font-family:'Cormorant Garamond',serif; color:#111;">{t}</h3>
+              <p class="text-sm leading-relaxed" style="color:#4A4A4A;">{b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Price summary card -->
+      <div class="reveal-right">
+        <!-- Gold top band -->
+        <div style="height:4px; background:linear-gradient(to right, #D27A29, #F8C16F);"></div>
+        <div style="background:#113E61; color:#ffffff; padding:2.5rem;">
+          <p class="label mb-4" style="color:rgba(248,193,111,0.9);">Price Range Summary</p>
+          <h3 class="text-3xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">All 7 Unit Types</h3>
+          <div>
+            {[
+              { label:'Entry — Type A',       range:'R2.25M' },
+              { label:'Mid Range — B, C, E',  range:'R2.5M – R2.95M' },
+              { label:'Premium — D, F, G',    range:'R3.35M – R3.5M' },
+              { label:'Deposit Required',     range:'10% only' },
+            ].map(({ label, range }) => (
+              <div class="flex justify-between items-center py-4" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+                <span class="text-sm" style="color:rgba(255,255,255,0.5);">{label}</span>
+                <span class="text-xl font-medium" style="font-family:'Cormorant Garamond',serif; color:#F8C16F;">{range}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Early bird callout -->
+          <div class="mt-6 px-4 py-4" style="background:rgba(210,122,41,0.15); border-left:3px solid #D27A29;">
+            <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#F8C16F;">Early Bird — First 10 Buyers</p>
+            <p class="text-sm" style="color:rgba(255,255,255,0.75);">
+              Save <span class="font-semibold text-white">R100,000</span> discount + <span class="font-semibold text-white">R100,000</span> in fees waived
+            </p>
+          </div>
+
+          <a href="/contact" class="btn-primary w-full text-center block mt-8">Register Interest</a>
+        </div>
+
+        <!-- Buyer types -->
+        <div class="grid grid-cols-2 gap-0">
+          {[
+            { label:'Families',          icon:'Secure estate, beaches, schools nearby' },
+            { label:'First-Time Buyers', icon:'Affordable coastal entry point' },
+            { label:'Retirees',          icon:'Low maintenance, lock-up-and-go' },
+            { label:'Investors',         icon:'Rental yield + capital growth' },
+          ].map(({ label, icon }) => (
+            <div class="p-5" style="background:#005280; border:1px solid rgba(255,255,255,0.06);">
+              <p class="text-sm font-medium mb-1" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:#ffffff;">{label}</p>
+              <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.45);">{icon}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Savings table -->
+  <section class="section" style="background:#113E61;">
+    <div class="max-w-4xl mx-auto">
+      <div class="mb-12">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+          What You Save
+        </h2>
+        <p class="mt-4 text-base" style="color:rgba(255,255,255,0.5); max-width:46ch;">
+          Kingsley Village offers one of the most compelling cost structures available anywhere on the North Coast.
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1);">
+        <div class="grid grid-cols-3 py-3 text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(255,255,255,0.1);">
+          <span>Cost Item</span>
+          <span class="text-center">Typical</span>
+          <span class="text-right">At Kingsley</span>
+        </div>
+        {savings.map(({ item, typical, kingsley }) => (
+          <div class="grid grid-cols-3 py-5 items-center" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+            <span class="text-sm text-white">{item}</span>
+            <span class="text-sm text-center line-through" style="color:rgba(255,255,255,0.25);">{typical}</span>
+            <span class="text-sm text-right font-medium" style="color:#F8C16F;">{kingsley}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clubhouse full bleed -->
+  <section class="relative h-[55vh] flex items-center overflow-hidden">
+    <Image
+      src={clubhouse}
+      alt="Kingsley Village pool and clubhouse"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:rgba(0,0,0,0.5);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 text-center w-full">
+      <h2 class="text-white mb-6" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4.5rem);">
+        Secure. Aspirational.<br/>Attainable.
+      </h2>
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <a href="/contact" class="btn-primary">Register Interest</a>
+        <a href="/units" class="btn-outline">View Unit Types</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Unit B split -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="reveal text-4xl lg:text-5xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#111;">
+          Download the<br/>Sales Brochure
+        </h2>
+        <p class="reveal text-base leading-relaxed mb-10" style="color:#4A4A4A; max-width:44ch;">
+          Full investment details, unit specifications, floor plans, and market analysis in a single document.
+        </p>
+        <a
+          href="/assets/Kingsley-Village-Sales-Brochure-MAIN.pdf"
+          target="_blank" rel="noopener" download
+          class="btn-dark reveal"
+        >
+          Download Brochure (PDF)
+        </a>
+      </div>
+      <div class="reveal-right">
+        <Image
+          src={unitB}
+          alt="Type B exterior — double garage and covered patio"
+          class="w-full aspect-video object-cover"
+          widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.reveal, .reveal-left, .reveal-right').forEach((el: any) => {
+    gsap.to(el, { opacity:1, x:0, y:0, duration:0.85, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%', once:true } });
+  });
+</script>

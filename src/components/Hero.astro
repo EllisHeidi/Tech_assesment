@@ -1,0 +1,91 @@
+---
+import aerialPoster from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+
+interface Props {
+  headline: string;
+  subheading: string;
+  ctaPrimary?:   { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+  videoSrc?: string;
+}
+
+const {
+  headline,
+  subheading,
+  ctaPrimary   = { label: 'Explore Homes', href: '/units' },
+  ctaSecondary = { label: 'Schedule a Viewing', href: '/contact' },
+  videoSrc = '/videos/Clip 01 - Street View.mp4',
+} = Astro.props;
+---
+
+<section class="relative min-h-screen flex items-end overflow-hidden" id="hero">
+
+  <!-- Background video (falls back to aerial poster) -->
+  <video
+    class="absolute inset-0 w-full h-full object-cover"
+    autoplay muted loop playsinline
+    poster={aerialPoster.src}
+    preload="none"
+    aria-hidden="true"
+  >
+    <source src={videoSrc} type="video/mp4" />
+  </video>
+
+  <!-- Dark gradient overlay — heavier at bottom for text legibility -->
+  <div
+    class="absolute inset-0"
+    style="background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.72) 100%);"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Content — anchored to bottom -->
+  <div class="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28">
+
+    <!-- Label -->
+    <p class="reveal label text-white/60 mb-5">Palm Lakes · KZN North Coast · 49 Homes</p>
+
+    <!-- Headline -->
+    <h1
+      class="reveal text-white leading-[1.0] mb-6"
+      style="font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 500;"
+    >
+      {headline}
+    </h1>
+
+    <!-- Subheading -->
+    <p class="reveal max-w-xl text-white/75 text-base lg:text-lg leading-relaxed mb-10">
+      {subheading}
+    </p>
+
+    <!-- CTAs -->
+    <div class="reveal flex flex-wrap gap-4">
+      <a href={ctaPrimary.href} class="btn-primary">{ctaPrimary.label}</a>
+      <a href={ctaSecondary.href} class="btn-outline">{ctaSecondary.label}</a>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-8 right-8 lg:right-12 z-10 flex flex-col items-center gap-2 reveal-fade">
+    <span class="text-white/40 text-[10px] tracking-[0.2em] uppercase rotate-90 origin-right translate-y-4">Scroll</span>
+    <div class="w-px h-12 bg-white/25"></div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from 'gsap';
+
+  gsap.to('#hero .reveal', {
+    opacity: 1, y: 0,
+    duration: 1,
+    ease: 'power3.out',
+    stagger: 0.18,
+    delay: 0.3,
+  });
+
+  gsap.to('#hero .reveal-fade', {
+    opacity: 1,
+    duration: 1.2,
+    delay: 1.2,
+    ease: 'power2.out',
+  });
+</script>

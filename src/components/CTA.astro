@@ -1,0 +1,67 @@
+---
+interface Props {
+  headline?: string;
+  subtext?: string;
+  primaryBtn?: { label: string; href: string };
+  secondaryBtn?: { label: string; href: string };
+  dark?: boolean;
+}
+
+const {
+  headline = 'Register & Save Up to R200k',
+  subtext = 'First 10 buyers receive R100k extra discount PLUS R100k in transfer fees, connection fees, and levies waived.',
+  primaryBtn = { label: 'Register Now', href: '/contact' },
+  secondaryBtn = { label: 'View All Units', href: '/units' },
+  dark = true,
+} = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden py-20 px-4"
+  style={dark ? 'background: linear-gradient(135deg, #113E61 0%, #005280 100%);' : 'background: #F0EFEF;'}
+>
+  {dark && (
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10" style="background: #F8C16F; transform: translate(30%, -30%);"></div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full opacity-10" style="background: #F8C16F; transform: translate(-30%, 30%);"></div>
+    </div>
+  )}
+
+  <div class="relative max-w-4xl mx-auto text-center gsap-fade-up">
+    <!-- Offer badge -->
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold tracking-widest uppercase mb-6" style={dark ? 'background: rgba(248,193,111,0.2); color: #F8C16F; border: 1px solid rgba(248,193,111,0.3);' : 'background: rgba(0,82,128,0.1); color: #005280;'}>
+      ⚡ Limited Time Offer
+    </div>
+
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6" style={`font-family: 'Oswald', sans-serif; color: ${dark ? '#ffffff' : '#113E61'};`}>
+      {headline}
+    </h2>
+    <p class="text-lg max-w-2xl mx-auto mb-10" style={dark ? 'color: rgba(255,255,255,0.75);' : 'color: #4a5568;'}>
+      {subtext}
+    </p>
+
+    <!-- Savings breakdown -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10 max-w-2xl mx-auto">
+      {[
+        { label: 'No Transfer Duties', icon: '✓' },
+        { label: 'No Attorney Fees', icon: '✓' },
+        { label: 'No Connection Fees', icon: '✓' },
+        { label: 'No Palm Lakes Levy', icon: '✓' },
+      ].map(({ label, icon }) => (
+        <div class="rounded-xl py-3 px-2 text-xs font-medium" style={dark ? 'background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.85);' : 'background: rgba(0,82,128,0.07); color: #113E61;'}>
+          <span class="block text-lg mb-1" style="color: #F8C16F;">{icon}</span>
+          {label}
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={primaryBtn.href} class="px-8 py-4 rounded-xl font-bold text-base transition-all hover:scale-105 hover:shadow-xl" style="background: #F8C16F; color: #113E61;">
+        {primaryBtn.label}
+      </a>
+      <a href={secondaryBtn.href} class="px-8 py-4 rounded-xl font-semibold text-base transition-all hover:scale-105" style={dark ? 'background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.25);' : 'background: white; color: #113E61; border: 1px solid rgba(17,62,97,0.2);'}>
+        {secondaryBtn.label}
+      </a>
+    </div>
+  </div>
+</section>

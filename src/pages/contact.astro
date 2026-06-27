@@ -1,0 +1,154 @@
+---
+import Layout  from '../layouts/Layout.astro';
+import Nav     from '../components/Nav.astro';
+import Footer  from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import gate     from '../assets/images/Still Renders/3D 12 - Gatehhouse - Exterior - No Logo.jpg';
+import living   from '../assets/images/Still Renders/3D 14 - Living Room Internal - No Logo.jpg';
+---
+
+<Layout
+  title="Contact — Kingsley Village"
+  description="Get in touch with Kingsley Village. Schedule a viewing, enquire about availability, or request investment information."
+>
+  <Nav />
+
+  <!-- Header -->
+  <section class="relative h-[45vh] flex items-end overflow-hidden">
+    <Image
+      src={gate}
+      alt="Kingsley Village entrance — Palm Lakes"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 55%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 pb-14 w-full">
+      <p class="label mb-3" style="color:rgba(248,193,111,0.9);">We'd love to hear from you</p>
+      <h1 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem);">
+        Get in Touch
+      </h1>
+    </div>
+  </section>
+
+  <!-- Contact grid -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16">
+
+      <!-- Sidebar info -->
+      <aside class="lg:col-span-2 space-y-10">
+        <div>
+          <span class="divider" style="background:#D27A29;"></span>
+          <h2 class="text-3xl lg:text-4xl mb-8" style="font-family:'Cormorant Garamond',serif; color:#111;">Contact Details</h2>
+          <ul class="space-y-6">
+            <li>
+              <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#8A8A8A;">Sales Director</p>
+              <p class="font-medium" style="color:#111;">Kevin Edwards</p>
+              <p class="text-sm" style="color:#8A8A8A;">Niche Developments</p>
+            </li>
+            <li>
+              <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#8A8A8A;">Phone</p>
+              <a href="tel:+27658883723" class="text-base transition-colors hover:text-[#D27A29]" style="color:#111;">+27 65 888 3723</a>
+            </li>
+            <li>
+              <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#8A8A8A;">Email</p>
+              <a href="mailto:kevin@nichedevelopments.co.za" class="text-sm transition-colors hover:text-[#D27A29]" style="color:#111;">kevin@nichedevelopments.co.za</a>
+            </li>
+            <li>
+              <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#8A8A8A;">Location</p>
+              <p class="text-sm leading-relaxed" style="color:#4A4A4A;">Sugar Boulevard, Palm Lakes<br/>Dolphin Coast 4392, KZN</p>
+            </li>
+            <li>
+              <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#8A8A8A;">Hours</p>
+              <p class="text-sm" style="color:#4A4A4A;">Mon–Fri 8am–5pm · Sat 9am–1pm</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Early bird box -->
+        <div style="background:#113E61; padding:1.75rem;">
+          <p class="label mb-3" style="color:rgba(248,193,111,0.9);">Early Bird Offer</p>
+          <p class="text-sm leading-relaxed mb-4" style="color:rgba(255,255,255,0.65);">
+            First 10 buyers receive <strong class="text-white">R100,000 extra discount</strong> + <strong class="text-white">R100,000 in fees waived.</strong>
+          </p>
+          <ul class="space-y-2 text-xs mb-0" style="color:rgba(255,255,255,0.45);">
+            <li style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.5rem;">No transfer duties</li>
+            <li style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.5rem;">No attorney fees</li>
+            <li style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.5rem;">No connection fees</li>
+            <li>No Palm Lakes levy</li>
+          </ul>
+        </div>
+
+        <!-- Interior image -->
+        <Image
+          src={living}
+          alt="Kingsley Village interior — premium finishes"
+          class="w-full h-52 object-cover hidden lg:block"
+          widths={[500,700]} sizes="30vw"
+        />
+      </aside>
+
+      <!-- Form -->
+      <div class="lg:col-span-3">
+        <form id="contact-form" class="space-y-6" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-xs tracking-widest uppercase mb-2" style="color:#8A8A8A;">Full Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith" class="form-input" />
+            </div>
+            <div>
+              <label for="phone" class="block text-xs tracking-widest uppercase mb-2" style="color:#8A8A8A;">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+27 82 000 0000" class="form-input" />
+            </div>
+          </div>
+          <div>
+            <label for="email" class="block text-xs tracking-widest uppercase mb-2" style="color:#8A8A8A;">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="jane@example.com" class="form-input" />
+          </div>
+          <div>
+            <label for="interest" class="block text-xs tracking-widest uppercase mb-2" style="color:#8A8A8A;">I'm Interested In</label>
+            <select id="interest" name="interest" class="form-input" style="appearance:none; cursor:pointer;">
+              <option value="">Select an option…</option>
+              <option value="unit">Unit Inquiry</option>
+              <option value="invest">Investment Information</option>
+              <option value="viewing">Schedule a Viewing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block text-xs tracking-widest uppercase mb-2" style="color:#8A8A8A;">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us what you're looking for…" class="form-input resize-none"></textarea>
+          </div>
+          <button type="submit" id="submit-btn" class="btn-dark w-full text-center">Send Message</button>
+        </form>
+
+        <!-- Success state -->
+        <div id="success-msg" class="hidden mt-8 py-10 text-center" style="border:1px solid rgba(0,0,0,0.1);">
+          <p class="text-3xl mb-2" style="font-family:'Cormorant Garamond',serif; color:#111;">Message Received</p>
+          <p class="text-sm" style="color:#8A8A8A;">We'll be in touch within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const success = document.getElementById('success-msg')!;
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.classList.remove('hidden');
+      gsap.from(success, { opacity:0, y:16, duration:0.6, ease:'power2.out' });
+    }, 900);
+  });
+</script>

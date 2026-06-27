@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette */
+  --color-k-navy:   #113E61;
+  --color-k-teal:   #005280;
+  --color-k-gold:   #D27A29;
+  --color-k-sand:   #F8C16F;
+  --color-k-cream:  #F8F7F4;
+  --color-k-stone:  #E8E5E0;
+  --color-k-dark:   #111111;
+  --color-k-mid:    #4A4A4A;
+  --color-k-muted:  #8A8A8A;
+
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-sans:    'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    color: #111111;
+    background: #F8F7F4;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ── Label style (replaces emoji-heavy chips) ─────────────── */
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-k-gold);
+}
+
+/* ── Thin divider line ─────────────────────────────────────── */
+.divider {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+/* ── GSAP initial states ───────────────────────────────────── */
+.reveal       { opacity: 0; transform: translateY(28px); }
+.reveal-left  { opacity: 0; transform: translateX(-32px); }
+.reveal-right { opacity: 0; transform: translateX(32px); }
+.reveal-fade  { opacity: 0; }
+.reveal-scale { opacity: 0; transform: scale(0.96); }
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #111111;
+  background: #F8C16F;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: #D27A29; color: #fff; transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.45);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.btn-outline:hover { background: rgba(255,255,255,0.1); transform: translateY(-1px); }
+
+.btn-dark {
+  display: inline-block;
+  padding: 0.875rem 2.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #111111;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-dark:hover { background: #113E61; transform: translateY(-1px); }
+
+/* ── Page fade-in ──────────────────────────────────────────── */
+.page-enter { animation: pageFade 0.4s ease-out both; }
+@keyframes pageFade { from { opacity:0; } to { opacity:1; } }
+
+/* ── Section spacing ───────────────────────────────────────── */
+.section { padding: 6rem 1.5rem; }
+@media (min-width: 1024px) { .section { padding: 8rem 1.5rem; } }
+
+/* ── Video utilities ───────────────────────────────────────── */
+video { display: block; }
+
+/* ── Form styling ─────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  color: #111;
+  background: #fff;
+  border: 1px solid #D6D3CD;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #113E61;
+  box-shadow: 0 0 0 3px rgba(17,62,97,0.12);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #F8F7F4; }
+::-webkit-scrollbar-thumb { background: #D27A29; }

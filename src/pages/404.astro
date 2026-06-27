@@ -1,0 +1,30 @@
+---
+import Layout  from '../layouts/Layout.astro';
+import Nav     from '../components/Nav.astro';
+import Footer  from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import aerial from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+---
+
+<Layout title="Page Not Found — Kingsley Village">
+  <Nav />
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <Image
+      src={aerial}
+      alt="Aerial view of Kingsley Village"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:rgba(0,0,0,0.68);"></div>
+    <div class="relative z-10 text-center px-6">
+      <p class="text-[8rem] lg:text-[12rem] font-medium leading-none text-white opacity-10 select-none" style="font-family:'Cormorant Garamond',serif;">404</p>
+      <h1 class="text-3xl lg:text-5xl text-white -mt-8 mb-4" style="font-family:'Cormorant Garamond',serif;">Page Not Found</h1>
+      <p class="mb-10 text-base" style="color:rgba(255,255,255,0.55);">This page has drifted out to sea. Let's get you back to shore.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="btn-primary">Back to Home</a>
+        <a href="/contact" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>

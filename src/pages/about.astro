@@ -1,0 +1,202 @@
+---
+import Layout  from '../layouts/Layout.astro';
+import Nav     from '../components/Nav.astro';
+import Footer  from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import unitA    from '../assets/images/Still Renders/3D 02 - Unit Type A - Exterior - No Logo.jpg';
+import unitE    from '../assets/images/Still Renders/3D 08 - Unit Type E - Exterior - No Logo.jpg';
+import living   from '../assets/images/Still Renders/3D 14 - Living Room Internal - No Logo.jpg';
+import bedroom  from '../assets/images/Still Renders/3D 15 - Bedroom Internal - No Logo.jpg';
+import club     from '../assets/images/Still Renders/3D 11 - Clubhouse - Exterior - No Logo.jpg';
+import sitePlan from '../assets/images/Marketing Plans/Site Plan.jpg';
+
+const process = [
+  { n:'01', t:'Choose Your Unit',       b:'Browse 7 unit types and select the home that fits your lifestyle and budget.' },
+  { n:'02', t:'10% Deposit',             b:'Secure your preferred unit with a deposit to lock in your price.' },
+  { n:'03', t:'Bond Application',        b:'Our team connects you with approved bond originators for seamless financing.' },
+  { n:'04', t:'Sale Agreement',          b:'Sign the agreement and begin the professional conveyancing process.' },
+  { n:'05', t:'Transfer & Registration', b:'Our attorneys manage all documentation — no hidden costs for qualifying buyers.' },
+  { n:'06', t:'Welcome Home',            b:'Receive your keys and join the Kingsley Village community.' },
+];
+---
+
+<Layout
+  title="About Kingsley Village — Our Vision"
+  description="Niche Developments brings 49 luxury sectional title homes to the KZN North Coast. Accessible coastal living without compromise."
+>
+  <Nav />
+
+  <!-- Header -->
+  <section class="relative h-[55vh] flex items-end overflow-hidden">
+    <Image
+      src={club}
+      alt="Kingsley Village clubhouse and community pool"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.1) 55%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 pb-16 w-full">
+      <p class="label mb-3" style="color:rgba(248,193,111,0.9);">Niche Developments</p>
+      <h1 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem);">
+        Our Vision
+      </h1>
+    </div>
+  </section>
+
+  <!-- Vision editorial split -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="reveal text-4xl lg:text-5xl mb-8" style="font-family:'Cormorant Garamond',serif; color:#111;">
+          Built for the People<br/>Who Live Here
+        </h2>
+        <div class="space-y-5 reveal">
+          <p class="text-base leading-relaxed" style="color:#4A4A4A; max-width:46ch;">
+            Kingsley Village was built on a simple but powerful belief: that first-time homeowners, growing families, retirees, and investors all deserve access to premium coastal living — without the premium cost that usually comes with it.
+          </p>
+          <p class="text-base leading-relaxed" style="color:#4A4A4A; max-width:46ch;">
+            By developing within the established Palm Lakes estate, we've been able to pass significant savings directly to buyers — eliminating transfer duties, connection fees, and other costs that typically inflate the true cost of ownership.
+          </p>
+          <p class="text-base leading-relaxed" style="color:#4A4A4A; max-width:46ch;">
+            Thoughtful architecture, quality finishes, and community-focused amenities deliver a development that genuinely improves daily life.
+          </p>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <Image
+          src={unitA}
+          alt="Kingsley Village Type A — modern coastal architecture"
+          class="w-full aspect-video object-cover"
+          widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Developer contact -->
+  <section class="section" style="background:#005280;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal-left">
+        <Image
+          src={unitE}
+          alt="Type E unit — end position with extended garden"
+          class="w-full aspect-video object-cover"
+          widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <p class="label mb-4" style="color:rgba(248,193,111,0.9);">The Developer</p>
+        <h2 class="reveal text-4xl lg:text-5xl mb-8" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+          Niche Developments
+        </h2>
+        <div class="space-y-5 reveal" style="color:rgba(255,255,255,0.6);">
+          <div class="pb-5" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <p class="text-xs tracking-widest uppercase mb-1" style="color:rgba(255,255,255,0.35);">Sales Director</p>
+            <p class="text-lg" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">Kevin Edwards</p>
+          </div>
+          <div class="pb-5" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <p class="text-xs tracking-widest uppercase mb-1" style="color:rgba(255,255,255,0.35);">Phone</p>
+            <a href="tel:+27658883723" class="hover:text-[#F8C16F] transition-colors text-sm">+27 65 888 3723</a>
+          </div>
+          <div class="pb-5" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+            <p class="text-xs tracking-widest uppercase mb-1" style="color:rgba(255,255,255,0.35);">Email</p>
+            <a href="mailto:kevin@nichedevelopments.co.za" class="hover:text-[#F8C16F] transition-colors text-sm">kevin@nichedevelopments.co.za</a>
+          </div>
+          <div>
+            <p class="text-xs tracking-widest uppercase mb-1" style="color:rgba(255,255,255,0.35);">Address</p>
+            <p class="text-sm">Sugar Boulevard, Palm Lakes, Dolphin Coast 4392</p>
+          </div>
+        </div>
+        <a href="/contact" class="btn-primary mt-10 inline-block">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interior pair -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="mb-12">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl" style="font-family:'Cormorant Garamond',serif; color:#111;">
+          What's Inside
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="reveal-left">
+          <Image
+            src={living}
+            alt="Open-plan kitchen and living with marble island"
+            class="w-full aspect-video object-cover"
+            widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+          />
+          <p class="text-xs tracking-widest uppercase mt-4" style="color:#8A8A8A;">Open-Plan Living & Kitchen</p>
+        </div>
+        <div class="reveal-right lg:mt-12">
+          <Image
+            src={bedroom}
+            alt="Master bedroom with natural light and built-in wardrobes"
+            class="w-full aspect-video object-cover"
+            widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+          />
+          <p class="text-xs tracking-widest uppercase mt-4" style="color:#8A8A8A;">Master Bedroom Suite</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purchase timeline -->
+  <section class="section" style="background:#113E61;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="mb-14">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+          From Enquiry to Keys
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {process.map(({ n, t, b }) => (
+          <div class="reveal">
+            <p class="text-5xl font-medium mb-4" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{n}</p>
+            <p class="text-lg font-medium mb-2" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">{t}</p>
+            <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.45);">{b}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-14">
+        <a href="/contact" class="btn-primary">Begin Your Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site plan -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="mb-12">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl mb-2" style="font-family:'Cormorant Garamond',serif; color:#111;">Site Plan</h2>
+        <p class="text-sm" style="color:#8A8A8A;">49 homes across 7 unit types within the landscaped Palm Lakes estate.</p>
+      </div>
+      <Image
+        src={sitePlan}
+        alt="Kingsley Village site plan — all unit types shown"
+        class="w-full object-contain"
+        widths={[1200,1600]} sizes="100vw"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.reveal, .reveal-left, .reveal-right').forEach((el: any) => {
+    gsap.to(el, { opacity:1, x:0, y:0, duration:0.85, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%', once:true } });
+  });
+</script>

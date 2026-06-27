@@ -1,0 +1,368 @@
+---
+import Layout   from '../layouts/Layout.astro';
+import Nav      from '../components/Nav.astro';
+import Hero     from '../components/Hero.astro';
+import Footer   from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import unitArender  from '../assets/images/Still Renders/3D 02 - Unit Type A - Exterior - No Logo.jpg';
+import unitBrender  from '../assets/images/Still Renders/3D 04 - Unit Type B - Exterior - No Logo.jpg';
+import unitCDrender from '../assets/images/Still Renders/3D 06 - Unit Type C & D - Exterior - No Logo.jpg';
+import clubhouse    from '../assets/images/Still Renders/3D 11 - Clubhouse - Exterior - No Logo.jpg';
+import gatehouse    from '../assets/images/Still Renders/3D 12 - Gatehhouse - Exterior - No Logo.jpg';
+import livingRoom   from '../assets/images/Still Renders/3D 14 - Living Room Internal - No Logo.jpg';
+import bedroom      from '../assets/images/Still Renders/3D 15 - Bedroom Internal - No Logo.jpg';
+import familyBeach  from '../assets/images/Kingsley Website Images/family.jpg';
+import beachCouple  from '../assets/images/Kingsley Website Images/reed-naliboff-j9ORcpyg550-unsplash.jpg';
+import surfer       from '../assets/images/Kingsley Website Images/michiel-annaert-fQEbXEPDYOE-unsplash.jpg';
+import whales       from '../assets/images/Kingsley Website Images/guille-pozzi-PO0UHx-5mHo-unsplash.jpg';
+import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+---
+
+<Layout title="Kingsley Village — Coastal Living, Palm Lakes">
+  <Nav />
+  <Hero
+    headline="Coastal Living, Redefined."
+    subheading="49 luxury sectional title homes within the prestigious Palm Lakes estate on South Africa's North Coast. From R2.25M."
+  />
+
+  <!-- ── Stats bar ─────────────────────────────────────────── -->
+  <section class="py-12 px-6" style="background: #111111;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-3 divide-x" style="border-color: rgba(255,255,255,0.1);">
+      {[
+        { num: '49',    label: 'Exclusive Homes' },
+        { num: 'R2.25M', label: 'Prices From' },
+        { num: '10%',   label: 'Annual Capital Growth' },
+      ].map(({ num, label }) => (
+        <div class="px-6 lg:px-12 py-4 text-center first:pl-0 last:pr-0">
+          <p class="text-2xl lg:text-3xl font-medium text-white mb-1" style="font-family:'Cormorant Garamond',serif;">{num}</p>
+          <p class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.35);">{label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── Intro editorial split ─────────────────────────────── -->
+  <section class="section" style="background: #F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <!-- Text -->
+      <div>
+        <span class="divider" style="background: #D27A29;"></span>
+        <p class="label mb-4" style="color:#D27A29;">About The Development</p>
+        <h2 class="reveal mb-8 text-4xl lg:text-5xl xl:text-6xl" style="font-family:'Cormorant Garamond',serif; color:#111111;">
+          A New Standard<br/>for North Coast Living
+        </h2>
+        <p class="reveal text-base leading-relaxed mb-5" style="color:#4A4A4A; max-width:46ch;">
+          Kingsley Village brings together thoughtful contemporary architecture, premium finishes, and a genuine sense of community — all within the security of Palm Lakes on the KwaZulu-Natal North Coast.
+        </p>
+        <p class="reveal text-base leading-relaxed mb-10" style="color:#4A4A4A; max-width:46ch;">
+          With 49 sectional title homes across 7 distinct unit types, every residence is designed to maximise natural light, indoor-outdoor flow, and the coastal lifestyle you've been working toward.
+        </p>
+        <a href="/about" class="btn-dark reveal">Discover Our Vision</a>
+      </div>
+      <!-- Image -->
+      <div class="reveal-right">
+        <Image
+          src={unitArender}
+          alt="Kingsley Village Type A exterior — modern flat-roof architecture with floor-to-ceiling glazing"
+          class="w-full aspect-video object-cover"
+          widths={[800, 1200]}
+          sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Clubhouse full-bleed ───────────────────────────────── -->
+  <section class="relative h-[70vh] flex items-center overflow-hidden">
+    <Image
+      src={clubhouse}
+      alt="Kingsley Village communal pool and clubhouse"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200, 1920]}
+      sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 100%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12">
+      <p class="label mb-4" style="color:rgba(248,193,111,0.9);">Estate Amenities</p>
+      <h2 class="text-white mb-6" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4.5rem); max-width:16ch; line-height:1.1;">
+        Community Pool & Clubhouse
+      </h2>
+      <p class="mb-8 text-base leading-relaxed" style="color:rgba(255,255,255,0.72); max-width:42ch;">
+        Gather, unwind, and entertain in a beautifully landscaped setting designed for every age and lifestyle.
+      </p>
+      <a href="/units" class="btn-primary">View All Homes</a>
+    </div>
+  </section>
+
+  <!-- ── Interior showcase ──────────────────────────────────── -->
+  <section class="section" style="background:#113E61;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-start mb-14 gap-6">
+        <div>
+          <span class="divider" style="background:#D27A29;"></span>
+          <h2 class="text-4xl lg:text-5xl xl:text-6xl" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+            Crafted Interiors
+          </h2>
+        </div>
+        <p class="text-base leading-relaxed lg:max-w-xs" style="color:rgba(255,255,255,0.55);">
+          Warm natural materials, marble surfaces, and bespoke joinery define every Kingsley home.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="reveal-left">
+          <Image
+            src={livingRoom}
+            alt="Open-plan living and kitchen — marble island, timber cabinetry, floor-to-ceiling glass"
+            class="w-full aspect-video object-cover"
+            widths={[800, 1200]}
+            sizes="(max-width:1024px) 100vw, 50vw"
+          />
+          <p class="text-xs tracking-widest uppercase mt-3" style="color:rgba(255,255,255,0.4);">Open-Plan Living & Kitchen</p>
+        </div>
+        <div class="reveal-right lg:mt-16">
+          <Image
+            src={bedroom}
+            alt="Master bedroom with generous wardrobe and soft natural light"
+            class="w-full aspect-video object-cover"
+            widths={[800, 1200]}
+            sizes="(max-width:1024px) 100vw, 50vw"
+          />
+          <p class="text-xs tracking-widest uppercase mt-3" style="color:rgba(255,255,255,0.4);">Master Bedroom Suite</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Featured unit types ────────────────────────────────── -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between items-end mb-14 gap-6">
+        <div>
+          <span class="divider" style="background:#D27A29;"></span>
+          <h2 class="text-4xl lg:text-5xl xl:text-6xl" style="font-family:'Cormorant Garamond',serif; color:#111111;">
+            Select Your Home
+          </h2>
+        </div>
+        <a href="/units" class="text-xs font-semibold tracking-widest uppercase border-b pb-0.5 transition-colors hover:text-[#D27A29]" style="color:#111; border-color:#111;">
+          View All 7 Types →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { title: 'Type A', beds:3, baths:2, garages:1, size:130, price:'R2.25M', img: unitArender, alt:'Type A exterior render' },
+          { title: 'Type B', beds:3, baths:2, garages:2, size:155, price:'R2.75M', img: unitBrender, alt:'Type B exterior render', featured:true },
+          { title: 'Type C & D', beds:3, baths:2, garages:1, size:140, price:'From R2.5M', img: unitCDrender, alt:'Type C and D exterior render' },
+        ].map(u => (
+          <article class="reveal group">
+            <div class="overflow-hidden mb-4 relative">
+              {u.featured && (
+                <span class="absolute top-4 left-4 z-10 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5" style="background:#D27A29; color:white;">
+                  Most Popular
+                </span>
+              )}
+              <Image
+                src={u.img}
+                alt={u.alt}
+                class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+                widths={[600, 900]}
+                sizes="(max-width:768px) 100vw, 33vw"
+              />
+            </div>
+            <div class="flex justify-between items-start mb-3">
+              <h3 class="text-2xl" style="font-family:'Cormorant Garamond',serif; color:#111;">{u.title}</h3>
+              <span class="text-lg font-medium" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{u.price}</span>
+            </div>
+            <div class="flex gap-6 text-xs tracking-widest uppercase mb-5" style="color:#8A8A8A;">
+              <span>{u.beds} Bed</span>
+              <span>{u.baths} Bath</span>
+              <span>{u.garages} Garage</span>
+              <span>{u.size} m²</span>
+            </div>
+            <a href="/units" class="text-xs font-semibold tracking-widest uppercase border-b pb-0.5 transition-colors hover:text-[#D27A29]" style="color:#111; border-color:rgba(0,0,0,0.2);">
+              View Details →
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Gatehouse / Security full-bleed ───────────────────── -->
+  <section class="relative h-[55vh] flex items-center justify-end overflow-hidden">
+    <Image
+      src={gatehouse}
+      alt="Kingsley Village secure gated entrance with Palm Lakes access control"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]}
+      sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to left, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.05) 75%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 w-full text-right">
+      <p class="label mb-3" style="color:rgba(248,193,111,0.9);">Security & Access</p>
+      <h2 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.5rem);">
+        Palm Lakes<br/>Gated Estate
+      </h2>
+    </div>
+  </section>
+
+  <!-- ── Lifestyle split — family beach ────────────────────── -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div class="reveal-left order-2 lg:order-1">
+        <Image
+          src={beachCouple}
+          alt="Couple and dog enjoying the beach on the KZN North Coast"
+          class="w-full aspect-[3/4] object-cover object-center"
+          widths={[800,1200]}
+          sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <span class="divider" style="background:#D27A29;"></span>
+        <p class="label mb-4" style="color:#D27A29;">The Life Awaiting You</p>
+        <h2 class="reveal mb-6 text-4xl lg:text-5xl xl:text-6xl" style="font-family:'Cormorant Garamond',serif; color:#111111;">
+          Beaches. Sunsets.<br/>A Life Well Lived.
+        </h2>
+        <p class="reveal text-base leading-relaxed mb-8" style="color:#4A4A4A; max-width:44ch;">
+          Sheffield Beach, Thompson Bay, and the broader Dolphin Coast are minutes from your front door. The North Coast's warm Indian Ocean waters and year-round subtropical climate make every day feel like a holiday.
+        </p>
+        <a href="/location" class="btn-dark reveal">Explore the Location</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video showcase ─────────────────────────────────────── -->
+  <section class="section" style="background:#005280;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="mb-14">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+          Experience Kingsley
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {[
+          { src:'/videos/Clip 01 - Street View.mp4',       label:'Street Arrival',         poster: gatehouse.src   },
+          { src:'/videos/Clip 02 - Garden View.mp4',       label:'Garden & Landscaping',   poster: unitArender.src },
+          { src:'/videos/Clip 03 - Clubhouse View.mp4',    label:'Clubhouse & Pool',        poster: clubhouse.src   },
+          { src:'/videos/Clip 04 - Living Room View.mp4',  label:'Living Room Interior',    poster: livingRoom.src  },
+        ].map(v => (
+          <div class="reveal group relative overflow-hidden" style="background:rgba(0,0,0,0.2);">
+            <video
+              class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+              muted loop playsinline preload="none"
+              poster={v.poster}
+              onmouseenter="this.play()"
+              onmouseleave="this.pause()"
+            >
+              <source src={v.src} type="video/mp4" />
+            </video>
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80 group-hover:opacity-0 transition-opacity">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.15); backdrop-filter:blur(4px);">
+                <svg class="w-5 h-5 ml-0.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/></svg>
+              </div>
+            </div>
+            <p class="px-4 py-3 text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.5);">{v.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Aerial + North Coast stats ────────────────────────── -->
+  <section class="relative py-24 px-6 overflow-hidden">
+    <Image
+      src={aerial}
+      alt="Aerial view of Kingsley Village within Palm Lakes estate"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]}
+      sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:rgba(0,0,0,0.62);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 w-full">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { n:'4,497', l:'Transfers — 3 Years',      s:'KZN North Coast' },
+          { n:'R15B+', l:'North Coast Sales Volume',  s:'3-year period' },
+          { n:'32%',   l:'Annual Growth Rate',        s:'year-on-year' },
+          { n:'1 km',  l:'From N2 Tinley Manor',     s:'Palm Lakes location' },
+        ].map(({ n, l, s }) => (
+          <div class="text-center px-6 py-10" style="background:rgba(10,10,10,0.72); border:1px solid rgba(255,255,255,0.08);">
+            <span class="block w-6 h-px mx-auto mb-5" style="background:#D27A29;"></span>
+            <p class="text-white mb-3" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,4.5vw,4.5rem); line-height:1; font-weight:500;">{n}</p>
+            <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#F8C16F; letter-spacing:0.16em;">{l}</p>
+            <p class="text-xs" style="color:rgba(255,255,255,0.35);">{s}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA / Early bird ───────────────────────────────────── -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <p class="label mb-4" style="color:#D27A29;">Limited Offer</p>
+        <h2 class="reveal mb-6 text-4xl lg:text-5xl xl:text-6xl" style="font-family:'Cormorant Garamond',serif; color:#111111;">
+          Save Up to<br/>R200,000
+        </h2>
+        <p class="reveal text-base leading-relaxed mb-10" style="color:#4A4A4A; max-width:44ch;">
+          The first 10 buyers receive an additional R100,000 discount on top of R100,000 in fees and levies already waived for all buyers.
+        </p>
+        <div class="flex flex-wrap gap-4 reveal">
+          <a href="/contact" class="btn-dark">Register Interest</a>
+          <a href="/invest"  class="btn-outline" style="color:#111; border-color:rgba(0,0,0,0.25);">Investment Details</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        {[
+          { label:'Transfer Duties',          value:'R0 waived' },
+          { label:'Attorney Fees',            value:'R0 waived' },
+          { label:'Connection Fees',          value:'R0 waived' },
+          { label:'Palm Lakes Levy',          value:'R0 exempt' },
+          { label:'Early Bird Bonus',         value:'+R100k off' },
+          { label:'Deposit Required',         value:'10% only' },
+        ].map(({ label, value }) => (
+          <div class="reveal py-5 px-4" style="border-top: 1px solid rgba(0,0,0,0.1);">
+            <p class="text-xs tracking-widest uppercase mb-2" style="color:#8A8A8A;">{label}</p>
+            <p class="text-base font-medium" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Generic reveal-on-scroll for all reveal classes
+  const revealClasses = ['.reveal', '.reveal-left', '.reveal-right', '.reveal-scale', '.reveal-fade'];
+  revealClasses.forEach(cls => {
+    gsap.utils.toArray(cls).forEach((el: any) => {
+      const isLeft  = el.classList.contains('reveal-left');
+      const isRight = el.classList.contains('reveal-right');
+      const isFade  = el.classList.contains('reveal-fade');
+      gsap.to(el, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        scale: 1,
+        duration: isFade ? 1 : 0.85,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 88%',
+          once: true,
+        },
+      });
+    });
+  });
+</script>

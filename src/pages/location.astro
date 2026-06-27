@@ -1,0 +1,225 @@
+---
+import Layout  from '../layouts/Layout.astro';
+import Nav     from '../components/Nav.astro';
+import Footer  from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import aerial   from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+import family   from '../assets/images/Kingsley Website Images/family.jpg';
+import surfer   from '../assets/images/Kingsley Website Images/michiel-annaert-fQEbXEPDYOE-unsplash.jpg';
+import whales   from '../assets/images/Kingsley Website Images/guille-pozzi-PO0UHx-5mHo-unsplash.jpg';
+import gate     from '../assets/images/Still Renders/3D 13 - Gatehhouse - Exterior - No Logo.jpg';
+
+const distances = [
+  { place:'Tinley Manor N2 Exit',      dist:'1 km'   },
+  { place:'Sheffield Beach',           dist:'3 km'   },
+  { place:'Thompson Bay',              dist:'4 km'   },
+  { place:'Ballito Town Centre',       dist:'12 km'  },
+  { place:'King Shaka International',  dist:'40 km'  },
+  { place:'Durban CBD',                dist:'60 km'  },
+  { place:'St Lucia World Heritage',   dist:'150 km' },
+  { place:'Hluhluwe-iMfolozi Park',    dist:'180 km' },
+];
+---
+
+<Layout
+  title="Location & Lifestyle — Kingsley Village, Palm Lakes"
+  description="Discover why the KZN North Coast is South Africa's fastest-growing property market. Kingsley Village in Palm Lakes — 1km from the N2."
+>
+  <Nav />
+
+  <!-- Hero: aerial image -->
+  <section class="relative h-[65vh] flex items-end overflow-hidden">
+    <Image
+      src={aerial}
+      alt="Aerial view of Kingsley Village and Palm Lakes estate"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.0) 55%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 pb-16 w-full">
+      <p class="label mb-3" style="color:rgba(248,193,111,0.9);">Sugar Boulevard · Palm Lakes · Dolphin Coast</p>
+      <h1 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem);">
+        Location & Lifestyle
+      </h1>
+    </div>
+  </section>
+
+  <!-- Map + distances -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="reveal text-4xl lg:text-5xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#111;">
+          Where We Are
+        </h2>
+        <p class="reveal text-base leading-relaxed mb-10" style="color:#4A4A4A; max-width:46ch;">
+          Positioned within Palm Lakes on the Dolphin Coast, Kingsley Village enjoys the perfect balance — close enough to Ballito's amenities, far enough for true tranquility.
+        </p>
+        <ul class="space-y-0">
+          {distances.map(({ place, dist }) => (
+            <li class="flex justify-between items-center py-4" style="border-bottom:1px solid rgba(0,0,0,0.08);">
+              <span class="text-sm" style="color:#4A4A4A;">{place}</span>
+              <span class="text-sm font-medium" style="font-family:'Cormorant Garamond',serif; color:#D27A29; font-size:1rem;">{dist}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <!-- Google Map -->
+      <div class="reveal-right">
+        <iframe
+          class="w-full"
+          style="height:520px; border:0; filter:grayscale(20%);"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13843.5!2d31.27!3d-29.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7036c5c1a10f9%3A0x0!2sPalm+Lakes%2C+Dolphin+Coast!5e0!3m2!1sen!2sza!4v1234567890"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kingsley Village location"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market stats over aerial -->
+  <section class="relative py-24 px-6 overflow-hidden">
+    <Image
+      src={aerial}
+      alt="KZN North Coast aerial view"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:rgba(10,10,10,0.62);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="label mb-3" style="color:rgba(248,193,111,0.9);">Market Data</p>
+        <h2 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.4rem,4vw,3.8rem);">
+          North Coast by the Numbers
+        </h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { n:'4,497',   l:'Property Transfers', s:'in 3 years' },
+          { n:'R15.03B', l:'Total Sales Volume',  s:'North Coast market' },
+          { n:'32%',     l:'Annual Sales Growth', s:'year-on-year' },
+          { n:'10%',     l:'Capital Appreciation',s:'select developments' },
+        ].map(({ n, l, s }) => (
+          <div class="reveal text-center px-6 py-10" style="background:rgba(10,10,10,0.72); border:1px solid rgba(255,255,255,0.08);">
+            <span class="block w-6 h-px mx-auto mb-5" style="background:#D27A29;"></span>
+            <p class="text-white mb-3" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,4.5vw,4.5rem); line-height:1; font-weight:500;">{n}</p>
+            <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#F8C16F; letter-spacing:0.16em;">{l}</p>
+            <p class="text-xs" style="color:rgba(255,255,255,0.35);">{s}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lifestyle — surfer -->
+  <section class="section" style="background:#005280;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal-left">
+        <Image
+          src={surfer}
+          alt="Surfer on the KZN North Coast"
+          class="w-full h-[560px] object-cover object-center"
+          widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <p class="label mb-4" style="color:rgba(248,193,111,0.9);">Lifestyle</p>
+        <h2 class="reveal text-4xl lg:text-5xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+          The North Coast<br/>Lifestyle
+        </h2>
+        <div class="space-y-6 reveal">
+          {[
+            { t:'World-Class Surfing & Swimming', b:'Sheffield Beach and Thompson Bay offer warm Indian Ocean water year-round. Safe swimming, surf breaks, and snorkelling — all minutes away.' },
+            { t:'Golf & Sport',                  b:'Umhlali Country Club and Zimbali Golf Estate are a short drive for enthusiasts.' },
+            { t:'Wildlife & Adventure',           b:'Day trips to Hluhluwe-iMfolozi or weekends at St Lucia World Heritage Site — all within reach.' },
+          ].map(({ t, b }) => (
+            <div class="pb-6" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+              <p class="font-medium mb-2" style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:#ffffff;">{t}</p>
+              <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.55);">{b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family beach full bleed -->
+  <section class="relative h-[80vh] flex items-center overflow-hidden">
+    <Image
+      src={family}
+      alt="Family on the beach near Kingsley Village"
+      class="absolute inset-0 w-full h-full object-cover object-[center_65%]"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:rgba(0,0,0,0.42);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 text-center w-full">
+      <h2 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,4.5rem);">
+        Made for Families
+      </h2>
+      <p class="mt-4 mb-8 text-base" style="color:rgba(255,255,255,0.72);">Safe, secure, and steps from the beach — a home your family will love for generations.</p>
+      <a href="/contact" class="btn-primary">Register Interest</a>
+    </div>
+  </section>
+
+  <!-- Whales / nature -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="reveal text-4xl lg:text-5xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#111;">
+          Nature at Your<br/>Doorstep
+        </h2>
+        <p class="reveal text-base leading-relaxed mb-6" style="color:#4A4A4A; max-width:44ch;">
+          The North Coast is home to extraordinary marine and land wildlife. Humpback and southern right whale sightings are common from June to November. The St Lucia estuary — just 2.5 hours north — is a UNESCO World Heritage Site.
+        </p>
+        <p class="reveal text-base leading-relaxed" style="color:#4A4A4A; max-width:44ch;">
+          Hluhluwe-iMfolozi Game Reserve, the oldest game reserve in Africa, is 180 km away — an effortless weekend safari.
+        </p>
+      </div>
+      <div class="reveal-right">
+        <Image
+          src={whales}
+          alt="Humpback whales off the KZN North Coast — visible from shore June–November"
+          class="w-full aspect-square object-cover object-[center_60%]"
+          widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Gatehouse security -->
+  <section class="relative h-[50vh] flex items-center overflow-hidden">
+    <Image
+      src={gate}
+      alt="Secure Palm Lakes gatehouse entrance"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.2) 75%);"></div>
+    <div class="relative z-10 pl-12 lg:pl-40 max-w-2xl">
+      <p class="label mb-4" style="color:rgba(248,193,111,0.95); font-size:0.75rem;">Palm Lakes Estate</p>
+      <h2 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5.5vw,5rem); text-shadow:0 2px 12px rgba(0,0,0,0.5);">
+        Secure Gated Living
+      </h2>
+      <p class="mt-5 text-lg" style="color:rgba(255,255,255,0.88); max-width:38ch;">
+        Round-the-clock access control and professional estate management give you complete peace of mind.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.reveal, .reveal-left, .reveal-right').forEach((el: any) => {
+    gsap.to(el, { opacity:1, x:0, y:0, duration:0.85, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%', once:true } });
+  });
+</script>

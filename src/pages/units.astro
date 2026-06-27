@@ -1,0 +1,310 @@
+---
+import Layout  from '../layouts/Layout.astro';
+import Nav     from '../components/Nav.astro';
+import Footer  from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+
+import renderA   from '../assets/images/Still Renders/3D 02 - Unit Type A - Exterior - No Logo.jpg';
+import renderA2  from '../assets/images/Still Renders/3D 03 - Unit Type A - Exterior - No Logo.jpg';
+import renderB   from '../assets/images/Still Renders/3D 04 - Unit Type B - Exterior - No Logo.jpg';
+import renderB2  from '../assets/images/Still Renders/3D 05 - Unit Type B - Exterior - No Logo.jpg';
+import renderCD  from '../assets/images/Still Renders/3D 06 - Unit Type C & D - Exterior - No Logo.jpg';
+import renderCD2 from '../assets/images/Still Renders/3D 07 - Unit Type C & D - Exterior - No Logo.jpg';
+import renderE   from '../assets/images/Still Renders/3D 08 - Unit Type E - Exterior - No Logo.jpg';
+import renderF   from '../assets/images/Still Renders/3D 09 - Unit Type F - Exterior - No Logo.jpg';
+import renderG   from '../assets/images/Still Renders/3D 10 - Unit Type G - Exterior - No Logo.jpg';
+import living    from '../assets/images/Still Renders/3D 14 - Living Room Internal - No Logo.jpg';
+import bedroom   from '../assets/images/Still Renders/3D 15 - Bedroom Internal - No Logo.jpg';
+import sitePlan  from '../assets/images/Marketing Plans/Site Plan.jpg';
+
+const units = [
+  {
+    type:'A', beds:3, baths:2, garages:1, size:130, price:2_250_000,
+    img: renderA, img2: renderA2,
+    features:['Master ensuite','Open-plan living & dining','Covered patio','Private garden','Single garage'],
+    pdf:'/assets/images/Marketing Plans/Unit Type A.pdf',
+  },
+  {
+    type:'B', beds:3, baths:2, garages:2, size:155, price:2_750_000,
+    img: renderB, img2: renderB2,
+    features:['Double garage','Scullery','Master ensuite','Guest bathroom','Larger covered patio'],
+    pdf:'/assets/images/Marketing Plans/Unit Type B.pdf',
+    featured: true,
+  },
+  {
+    type:'C', beds:3, baths:2, garages:1, size:140, price:2_500_000,
+    img: renderCD, img2: renderCD2,
+    features:['Corner unit position','Master ensuite','Courtyard garden','Open-plan kitchen','Single garage'],
+    pdf:'/assets/images/Marketing Plans/Unit Type C.pdf',
+  },
+  {
+    type:'D', beds:4, baths:3, garages:2, size:195, price:3_350_000,
+    img: renderCD, img2: renderCD2,
+    features:['4 bedrooms','Study nook','Scullery & pantry','Courtyard entertainment','2 en-suites'],
+    pdf:'/assets/images/Marketing Plans/Unit Type D.pdf',
+  },
+  {
+    type:'E', beds:3, baths:2, garages:1, size:148, price:2_550_000,
+    img: renderE, img2: renderE,
+    features:['End unit','Extra side yard','Master ensuite','Open kitchen with island','Garden room'],
+    pdf:'/assets/images/Marketing Plans/Unit Type E.pdf',
+  },
+  {
+    type:'F', beds:3, baths:2, garages:2, size:165, price:2_950_000,
+    img: renderF, img2: renderF,
+    features:['Double garage','Optional study/4th bed','Scullery','Large covered patio','Landscaped garden'],
+    pdf:'/assets/images/Marketing Plans/Unit Type F.pdf',
+  },
+  {
+    type:'G', beds:4, baths:3, garages:2, size:200, price:3_500_000,
+    img: renderG, img2: renderG,
+    features:['Largest unit type','Premium specification','3 full bathrooms','Chef kitchen layout','Entertainment deck'],
+    pdf:'/assets/images/Marketing Plans/Unit Type G.pdf',
+  },
+];
+
+const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
+---
+
+<Layout
+  title="Unit Types & Pricing — Kingsley Village"
+  description="Explore all 7 unit types at Kingsley Village. 3–4 bedroom homes from R2.25M on the KZN North Coast."
+>
+  <Nav />
+
+  <!-- Page header over interior image -->
+  <section class="relative h-[55vh] flex items-end overflow-hidden">
+    <Image
+      src={living}
+      alt="Kingsley Village open-plan interior"
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[1200,1920]} sizes="100vw"
+    />
+    <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 60%);"></div>
+    <div class="relative z-10 max-w-screen-xl mx-auto px-6 lg:px-12 pb-16 w-full">
+      <p class="label mb-3" style="color:rgba(248,193,111,0.9);">7 Unit Types · Palm Lakes</p>
+      <h1 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,6vw,5rem);">
+        Find Your Perfect Home
+      </h1>
+    </div>
+  </section>
+
+  <!-- Savings ribbon -->
+  <div class="py-4 px-6 text-center text-xs tracking-widest uppercase font-semibold text-white" style="background:#D27A29;">
+    All buyers: No transfer duties · No attorney fees · No connection fees · 10% deposit only
+  </div>
+
+  <!-- Unit cards -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-screen-xl mx-auto space-y-24">
+      {units.map((u, i) => (
+        <article id={`type-${u.type.toLowerCase()}`} class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal">
+          <!-- Images -->
+          <div class={i % 2 === 0 ? 'order-1' : 'order-1 lg:order-2'}>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="col-span-2 overflow-hidden">
+                <Image
+                  src={u.img}
+                  alt={`Type ${u.type} exterior — Kingsley Village`}
+                  class="w-full aspect-video object-cover"
+                  widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
+                />
+              </div>
+              {u.img2 !== u.img && (
+                <div class="overflow-hidden">
+                  <Image
+                    src={u.img2}
+                    alt={`Type ${u.type} alternate view`}
+                    class="w-full aspect-video object-cover"
+                    widths={[400,600]} sizes="25vw"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+
+          <!-- Details -->
+          <div class={i % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}>
+            {u.featured && (
+              <span class="inline-block text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 mb-4" style="background:#D27A29; color:white;">
+                Most Popular
+              </span>
+            )}
+            <p class="label mb-2" style="color:#D27A29;">Unit Type</p>
+            <h2 class="mb-2" style="font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,5vw,4.5rem); color:#111; line-height:1;">
+              Type {u.type}
+            </h2>
+            <p class="text-3xl font-medium mb-8" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{fmt(u.price)}</p>
+
+            <!-- Specs row -->
+            <div class="flex gap-6 mb-8 pb-8" style="border-bottom:1px solid rgba(0,0,0,0.1);">
+              {[
+                { v: u.beds,    l: 'Bedrooms' },
+                { v: u.baths,   l: 'Bathrooms' },
+                { v: u.garages, l: 'Garages' },
+                { v: `${u.size}m²`, l: 'Floor Area' },
+              ].map(({ v, l }) => (
+                <div>
+                  <p class="text-2xl font-medium" style="font-family:'Cormorant Garamond',serif; color:#111;">{v}</p>
+                  <p class="text-xs tracking-widest uppercase mt-0.5" style="color:#8A8A8A;">{l}</p>
+                </div>
+              ))}
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-2.5 mb-10">
+              {u.features.map(f => (
+                <li class="flex items-center gap-3 text-sm" style="color:#4A4A4A;">
+                  <span class="w-1 h-1 rounded-full flex-shrink-0" style="background:#D27A29;"></span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <!-- Actions -->
+            <div class="flex flex-wrap gap-4">
+              <a href="/contact" class="btn-dark">Enquire Now</a>
+              <a
+                href={u.pdf}
+                target="_blank"
+                rel="noopener"
+                class="btn-outline text-xs"
+                style="color:#111; border-color:rgba(0,0,0,0.25);"
+                download
+              >
+                Download Floor Plan
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Site plan -->
+  <section class="section" style="background:#113E61;">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="mb-12">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">Site Plan</h2>
+        <p class="mt-4 text-sm" style="color:rgba(255,255,255,0.5);">49 homes across 7 unit types — all within the landscaped Palm Lakes estate.</p>
+      </div>
+      <Image
+        src={sitePlan}
+        alt="Kingsley Village site plan showing all 7 unit types within Palm Lakes"
+        class="w-full object-contain"
+        widths={[1200,1600]} sizes="100vw"
+      />
+    </div>
+  </section>
+
+  <!-- Pricing table -->
+  <section class="section" style="background:#F8F7F4;">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-12">
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl" style="font-family:'Cormorant Garamond',serif; color:#111;">Pricing Overview</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr style="border-bottom:2px solid #111;">
+              <th class="text-left py-4 text-xs tracking-widest uppercase font-semibold" style="color:#8A8A8A;">Type</th>
+              <th class="text-center py-4 text-xs tracking-widest uppercase font-semibold" style="color:#8A8A8A;">Bed</th>
+              <th class="text-center py-4 text-xs tracking-widest uppercase font-semibold" style="color:#8A8A8A;">Bath</th>
+              <th class="text-center py-4 text-xs tracking-widest uppercase font-semibold" style="color:#8A8A8A;">Garage</th>
+              <th class="text-center py-4 text-xs tracking-widest uppercase font-semibold" style="color:#8A8A8A;">m²</th>
+              <th class="text-right py-4 text-xs tracking-widest uppercase font-semibold" style="color:#8A8A8A;">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {units.map((u, i) => (
+              <tr
+                class="transition-colors hover:bg-stone-100"
+                style={`border-bottom:1px solid rgba(0,0,0,0.07); ${u.featured ? 'background:rgba(210,122,41,0.04);':''}`}
+              >
+                <td class="py-5">
+                  <span class="font-medium" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:#111;">
+                    Type {u.type}
+                  </span>
+                  {u.featured && <span class="ml-2 text-[10px] font-semibold tracking-widest uppercase px-2 py-0.5" style="background:#D27A29;color:white;">Popular</span>}
+                </td>
+                <td class="py-5 text-center" style="color:#4A4A4A;">{u.beds}</td>
+                <td class="py-5 text-center" style="color:#4A4A4A;">{u.baths}</td>
+                <td class="py-5 text-center" style="color:#4A4A4A;">{u.garages}</td>
+                <td class="py-5 text-center" style="color:#4A4A4A;">{u.size}</td>
+                <td class="py-5 text-right font-medium" style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:#D27A29;">{fmt(u.price)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-xs" style="color:#8A8A8A;">Prices correct at time of publication and subject to change. VAT inclusive. 10% deposit secures your unit.</p>
+    </div>
+  </section>
+
+  <!-- Bedroom feature split -->
+  <section class="section" style="background:#005280;">
+    <div class="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal-left group relative overflow-hidden">
+        <video
+          class="w-full aspect-video object-cover"
+          muted loop playsinline preload="none"
+          poster={bedroom.src}
+          onmouseenter="this.play()"
+          onmouseleave="this.pause()"
+        >
+          <source src="/videos/Clip 05 - Bedrrom View.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-70 group-hover:opacity-0 transition-opacity">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.15); backdrop-filter:blur(4px);">
+            <svg class="w-5 h-5 ml-0.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="divider" style="background:#D27A29;"></span>
+        <h2 class="text-4xl lg:text-5xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">
+          Premium Finishes<br/>as Standard
+        </h2>
+        <p class="mb-10 text-base leading-relaxed" style="color:rgba(255,255,255,0.6); max-width:44ch;">
+          Every Kingsley home features marble countertops, timber joinery, brass fixture details, and large-format tiles throughout — delivered as standard, not as an upgrade.
+        </p>
+        <a href="/contact" class="btn-primary">Book a Site Visit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brochure download -->
+  <section class="py-16 px-6 text-center" style="background:#F8F7F4;">
+    <div class="max-w-xl mx-auto">
+      <h3 class="text-3xl mb-4" style="font-family:'Cormorant Garamond',serif; color:#111;">Download the Sales Brochure</h3>
+      <p class="text-sm mb-8" style="color:#8A8A8A;">Full unit specifications, floor plans, and investment details in one document.</p>
+      <a
+        href="/assets/Kingsley-Village-Sales-Brochure-MAIN.pdf"
+        target="_blank"
+        rel="noopener"
+        class="btn-dark"
+        download
+      >
+        Download Brochure (PDF)
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.utils.toArray('.reveal, .reveal-left, .reveal-right').forEach((el: any) => {
+    gsap.to(el, {
+      opacity:1, x:0, y:0,
+      duration:0.85, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 88%', once:true },
+    });
+  });
+</script>

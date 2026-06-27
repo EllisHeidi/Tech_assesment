@@ -1,0 +1,92 @@
+---
+interface Props {
+  type: string;
+  beds: number;
+  baths: number;
+  garages: number;
+  size: number;
+  pricePerM2: number;
+  totalPrice: number;
+  features: string[];
+  highlight?: boolean;
+}
+
+const { type, beds, baths, garages, size, pricePerM2, totalPrice, features, highlight = false } = Astro.props;
+
+const formatPrice = (p: number) =>
+  `R${(p / 1_000_000).toFixed(2)}M`;
+
+const formatM2Price = (p: number) =>
+  `R${p.toLocaleString()}/m²`;
+---
+
+<div
+  class={`gsap-fade-up unit-card relative rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col ${highlight ? 'ring-2' : ''}`}
+  style={`background: white; ${highlight ? 'ring-color: #F8C16F;' : ''}`}
+>
+  {highlight && (
+    <div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full text-xs font-bold" style="background: #F8C16F; color: #113E61;">
+      Popular
+    </div>
+  )}
+
+  <!-- Unit image placeholder -->
+  <div class="relative h-52 flex items-center justify-center" style="background: linear-gradient(135deg, #113E61 0%, #005280 100%);">
+    <div class="text-center">
+      <div class="text-6xl font-bold opacity-20 text-white" style="font-family: 'Oswald', sans-serif;">
+        {type}
+      </div>
+      <div class="text-white/60 text-sm mt-2">Unit Render Coming Soon</div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(248,193,111,0.4), transparent);"></div>
+  </div>
+
+  <div class="p-6 flex flex-col flex-1">
+    <!-- Header -->
+    <div class="flex items-start justify-between mb-4">
+      <div>
+        <h3 class="text-xl font-bold" style="font-family: 'Oswald', sans-serif; color: #113E61;">Type {type}</h3>
+        <p class="text-sm" style="color: #6b7280;">{size} m² · {formatM2Price(pricePerM2)}</p>
+      </div>
+      <div class="text-right">
+        <div class="text-xl font-bold" style="color: #D27A29;">{formatPrice(totalPrice)}</div>
+        <div class="text-xs" style="color: #9ca3af;">Total Price</div>
+      </div>
+    </div>
+
+    <!-- Specs row -->
+    <div class="grid grid-cols-3 gap-2 mb-5 p-3 rounded-xl" style="background: #F0EFEF;">
+      {[
+        { icon: '🛏', label: `${beds} Bed${beds > 1 ? 's' : ''}` },
+        { icon: '🚿', label: `${baths} Bath${baths > 1 ? 's' : ''}` },
+        { icon: '🚗', label: `${garages} Garage${garages > 1 ? 's' : ''}` },
+      ].map(({ icon, label }) => (
+        <div class="text-center">
+          <div class="text-base">{icon}</div>
+          <div class="text-xs font-medium mt-0.5" style="color: #113E61;">{label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Features -->
+    <ul class="space-y-1.5 mb-6 flex-1">
+      {features.map(f => (
+        <li class="flex items-center gap-2 text-sm" style="color: #374151;">
+          <svg class="w-3.5 h-3.5 shrink-0" style="color: #005280;" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+          </svg>
+          {f}
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href="/contact"
+      class="block text-center py-3 rounded-xl font-semibold text-sm transition-all hover:scale-105"
+      style={highlight ? 'background: #F8C16F; color: #113E61;' : 'background: #113E61; color: white;'}
+    >
+      Enquire About Type {type}
+    </a>
+  </div>
+</div>
