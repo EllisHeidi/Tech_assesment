@@ -246,10 +246,10 @@ const base = import.meta.env.BASE_URL;
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[
-          { src:`${base}videos/Clip 01 - Street View.mp4`,       label:'Street Arrival',       poster: gatehouse.src   },
-          { src:`${base}videos/Clip 02 - Garden View.mp4`,       label:'Garden & Landscaping', poster: unitArender.src },
-          { src:`${base}videos/Clip 03 - Clubhouse View.mp4`,    label:'Clubhouse & Pool',     poster: clubhouse.src   },
-          { src:`${base}videos/Clip 04 - Living Room View.mp4`,  label:'Living Room Interior', poster: livingRoom.src  },
+          { src:'https://res.cloudinary.com/dc60tljo7/video/upload/v1782643136/Clip_01_-_Street_View_1_kisw12.mp4',                label:'Street Arrival',       poster: gatehouse.src   },
+          { src:'https://res.cloudinary.com/dc60tljo7/video/upload/v1782643141/Clip_02_-_Garden_View_1_f5oy3w.mp4',      label:'Garden & Landscaping', poster: unitArender.src },
+          { src:'https://res.cloudinary.com/dc60tljo7/video/upload/v1782643141/Clip_03_-_Clubhouse_View_1_nyt4k0.mp4',   label:'Clubhouse & Pool',     poster: clubhouse.src   },
+          { src:'https://res.cloudinary.com/dc60tljo7/video/upload/v1782643149/Clip_04_-_Living_Room_View_nb8xpq.mp4',   label:'Living Room Interior', poster: livingRoom.src  },
         ].map(v => (
           <div class="reveal group relative overflow-hidden" style="background:rgba(0,0,0,0.2);">
             <video
