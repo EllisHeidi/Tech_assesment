@@ -75,6 +75,9 @@ const {
 <script>
   import { gsap } from 'gsap';
 
+  const heroVideo = document.querySelector('#hero video') as HTMLVideoElement;
+  if (heroVideo) heroVideo.playbackRate = 0.5;
+
   gsap.to('#hero .reveal', {
     opacity: 1, y: 0,
     duration: 1,
