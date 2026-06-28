@@ -70,7 +70,8 @@ const distances = [
       <div class="reveal-right">
         <iframe
           class="w-full"
-          style="height:520px; border:0; filter:grayscale(20%);"
+          class="h-64 sm:h-80 lg:h-[520px]"
+          style="border:0; filter:grayscale(20%);"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13843.5!2d31.27!3d-29.53!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7036c5c1a10f9%3A0x0!2sPalm+Lakes%2C+Dolphin+Coast!5e0!3m2!1sen!2sza!4v1234567890"
           allowfullscreen
           loading="lazy"
@@ -106,7 +107,7 @@ const distances = [
         ].map(({ n, l, s }) => (
           <div class="reveal text-center px-6 py-10" style="background:rgba(10,10,10,0.72); border:1px solid rgba(255,255,255,0.08);">
             <span class="block w-6 h-px mx-auto mb-5" style="background:#D27A29;"></span>
-            <p class="text-white mb-3" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,4.5vw,4.5rem); line-height:1; font-weight:500;">{n}</p>
+            <p class="text-white mb-3" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4.5vw,4.5rem); line-height:1; font-weight:500;">{n}</p>
             <p class="text-xs tracking-widest uppercase mb-1.5" style="color:#F8C16F; letter-spacing:0.16em;">{l}</p>
             <p class="text-xs" style="color:rgba(255,255,255,0.35);">{s}</p>
           </div>
@@ -122,7 +123,7 @@ const distances = [
         <Image
           src={surfer}
           alt="Surfer on the KZN North Coast"
-          class="w-full h-[560px] object-cover object-center"
+          class="w-full h-72 sm:h-[400px] lg:h-[560px] object-cover object-center"
           widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
         />
       </div>
@@ -201,7 +202,7 @@ const distances = [
       widths={[1200,1920]} sizes="100vw"
     />
     <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.2) 75%);"></div>
-    <div class="relative z-10 pl-12 lg:pl-40 max-w-2xl">
+    <div class="relative z-10 px-6 lg:pl-40 lg:pr-12 max-w-2xl">
       <p class="label mb-4" style="color:rgba(248,193,111,0.95); font-size:0.75rem;">Palm Lakes Estate</p>
       <h2 class="text-white" style="font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,5.5vw,5rem); text-shadow:0 2px 12px rgba(0,0,0,0.5);">
         Secure Gated Living

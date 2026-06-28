@@ -68,7 +68,7 @@ const savings = [
       <div class="reveal-right">
         <!-- Gold top band -->
         <div style="height:4px; background:linear-gradient(to right, #D27A29, #F8C16F);"></div>
-        <div style="background:#113E61; color:#ffffff; padding:2.5rem;">
+        <div style="background:#113E61; color:#ffffff;" class="p-6 sm:p-10">
           <p class="label mb-4" style="color:rgba(248,193,111,0.9);">Price Range Summary</p>
           <h3 class="text-3xl mb-6" style="font-family:'Cormorant Garamond',serif; color:#ffffff;">All 7 Unit Types</h3>
           <div>
@@ -126,19 +126,21 @@ const savings = [
           Kingsley Village offers one of the most compelling cost structures available anywhere on the North Coast.
         </p>
       </div>
-      <div style="border-top:1px solid rgba(255,255,255,0.1);">
-        <div class="grid grid-cols-3 py-3 text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(255,255,255,0.1);">
-          <span>Cost Item</span>
-          <span class="text-center">Typical</span>
-          <span class="text-right">At Kingsley</span>
-        </div>
-        {savings.map(({ item, typical, kingsley }) => (
-          <div class="grid grid-cols-3 py-5 items-center" style="border-bottom:1px solid rgba(255,255,255,0.07);">
-            <span class="text-sm text-white">{item}</span>
-            <span class="text-sm text-center line-through" style="color:rgba(255,255,255,0.25);">{typical}</span>
-            <span class="text-sm text-right font-medium" style="color:#F8C16F;">{kingsley}</span>
+      <div class="overflow-x-auto" style="border-top:1px solid rgba(255,255,255,0.1);">
+        <div class="min-w-[480px]">
+          <div class="grid grid-cols-3 py-3 text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.35); border-bottom:1px solid rgba(255,255,255,0.1);">
+            <span>Cost Item</span>
+            <span class="text-center">Typical</span>
+            <span class="text-right">At Kingsley</span>
           </div>
-        ))}
+          {savings.map(({ item, typical, kingsley }) => (
+            <div class="grid grid-cols-3 py-5 items-center" style="border-bottom:1px solid rgba(255,255,255,0.07);">
+              <span class="text-sm text-white">{item}</span>
+              <span class="text-sm text-center line-through" style="color:rgba(255,255,255,0.25);">{typical}</span>
+              <span class="text-sm text-right font-medium" style="color:#F8C16F;">{kingsley}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>

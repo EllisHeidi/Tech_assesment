@@ -32,13 +32,13 @@ const base = import.meta.env.BASE_URL;
   <section class="py-12 px-6" style="background: #111111;">
     <div class="max-w-screen-xl mx-auto grid grid-cols-3 divide-x" style="border-color: rgba(255,255,255,0.1);">
       {[
-        { num: '49',    label: 'Exclusive Homes' },
-        { num: 'R2.25M', label: 'Prices From' },
-        { num: '10%',   label: 'Annual Capital Growth' },
+        { num: '49',    label: 'Homes' },
+        { num: 'R2.25M', label: 'From' },
+        { num: '10%',   label: 'Growth p.a.' },
       ].map(({ num, label }) => (
-        <div class="px-6 lg:px-12 py-4 text-center first:pl-0 last:pr-0">
-          <p class="text-2xl lg:text-3xl font-medium text-white mb-1" style="font-family:'Cormorant Garamond',serif;">{num}</p>
-          <p class="text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.35);">{label}</p>
+        <div class="px-2 sm:px-6 lg:px-12 py-4 text-center first:pl-0 last:pr-0">
+          <p class="text-xl sm:text-2xl lg:text-3xl font-medium text-white mb-1" style="font-family:'Cormorant Garamond',serif;">{num}</p>
+          <p class="text-[10px] sm:text-xs tracking-widest uppercase" style="color:rgba(255,255,255,0.35);">{label}</p>
         </div>
       ))}
     </div>
@@ -176,7 +176,7 @@ const base = import.meta.env.BASE_URL;
               <h3 class="text-2xl" style="font-family:'Cormorant Garamond',serif; color:#111;">{u.title}</h3>
               <span class="text-lg font-medium" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{u.price}</span>
             </div>
-            <div class="flex gap-6 text-xs tracking-widest uppercase mb-5" style="color:#8A8A8A;">
+            <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs tracking-widest uppercase mb-5" style="color:#8A8A8A;">
               <span>{u.beds} Bed</span>
               <span>{u.baths} Bath</span>
               <span>{u.garages} Garage</span>
@@ -258,6 +258,7 @@ const base = import.meta.env.BASE_URL;
               poster={v.poster}
               onmouseenter="this.play()"
               onmouseleave="this.pause()"
+              onclick="this.paused ? this.play() : this.pause()"
             >
               <source src={v.src} type="video/mp4" />
             </video>

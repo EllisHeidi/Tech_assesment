@@ -109,6 +109,12 @@ const path = Astro.url.pathname;
   const open   = document.getElementById('icon-open')!;
   const close  = document.getElementById('icon-close')!;
 
+  const closeDrawer = () => {
+    drawer.classList.add('hidden');
+    open.classList.remove('hidden');
+    close.classList.add('hidden');
+  };
+
   // Mobile toggle
   toggle.addEventListener('click', () => {
     const isOpen = !drawer.classList.contains('hidden');
@@ -116,6 +122,9 @@ const path = Astro.url.pathname;
     open.classList.toggle('hidden', !isOpen);
     close.classList.toggle('hidden', isOpen);
   });
+
+  // Close drawer when a nav link is tapped
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 1024) {

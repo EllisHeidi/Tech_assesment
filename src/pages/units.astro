@@ -138,7 +138,7 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
             <p class="text-3xl font-medium mb-8" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{fmt(u.price)}</p>
 
             <!-- Specs row -->
-            <div class="flex gap-6 mb-8 pb-8" style="border-bottom:1px solid rgba(0,0,0,0.1);">
+            <div class="flex flex-wrap gap-x-6 gap-y-3 mb-8 pb-8" style="border-bottom:1px solid rgba(0,0,0,0.1);">
               {[
                 { v: u.beds,    l: 'Bedrooms' },
                 { v: u.baths,   l: 'Bathrooms' },
@@ -219,7 +219,7 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
             </tr>
           </thead>
           <tbody>
-            {units.map((u, i) => (
+            {units.map((u) => (
               <tr
                 class="transition-colors hover:bg-stone-100"
                 style={`border-bottom:1px solid rgba(0,0,0,0.07); ${u.featured ? 'background:rgba(210,122,41,0.04);':''}`}
@@ -254,6 +254,7 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
           poster={bedroom.src}
           onmouseenter="this.play()"
           onmouseleave="this.pause()"
+          onclick="this.paused ? this.play() : this.pause()"
         >
           <source src="/videos/Clip 05 - Bedrrom View.mp4" type="video/mp4" />
         </video>
