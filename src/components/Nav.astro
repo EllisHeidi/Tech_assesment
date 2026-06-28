@@ -48,9 +48,11 @@ const path = Astro.url.pathname;
       </nav>
 
       <!-- Desktop CTA -->
-      <a href={`${base}contact`} class="hidden lg:inline-block btn-primary text-xs">
-        Schedule a Viewing
-      </a>
+      <div class="hidden lg:block">
+        <a href={`${base}contact`} class="btn-primary text-xs">
+          Schedule a Viewing
+        </a>
+      </div>
 
       <!-- Mobile toggle -->
       <button
@@ -83,6 +85,7 @@ const path = Astro.url.pathname;
           {label}
         </a>
       ))}
+      <a href={`${base}contact`} class="btn-primary text-center mt-5 text-xs">Schedule a Viewing</a>
     </nav>
   </div>
 </header>
