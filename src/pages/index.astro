@@ -407,35 +407,38 @@ const base = import.meta.env.BASE_URL;
 
       document.documentElement.style.overflow = 'hidden';
 
-      window.addEventListener('load', () => {
-        const tl = gsap.timeline({ delay: 0.6 });
-        const dock = getDockTarget();
+      // Run on a fixed short delay rather than waiting for window 'load' —
+      // that event only fires once every resource (including the large hero
+      // video/poster) has fully downloaded, which under a slow connection or
+      // Lighthouse's throttling can hide the whole page behind this overlay
+      // for a very long time and tanks LCP/Speed Index.
+      const tl = gsap.timeline({ delay: 0.6 });
+      const dock = getDockTarget();
 
-        tl.to(preloaderIcon, { opacity: 0, y: -20, duration: 0.5, ease: 'power2.out' })
-          .add(() => preloaderIcon.remove())
-          .to(preloaderBg, { opacity: 0, duration: 0.8, ease: 'power2.out' }, '<')
-          .to(preloaderLogo, {
-            top: dock.top,
-            width: dock.width,
-            yPercent: 0,
-            duration: 1,
-            ease: 'power3.inOut',
-          }, '<')
-          .add(() => {
-            preloaderBg.remove();
-            document.documentElement.style.overflow = '';
+      tl.to(preloaderIcon, { opacity: 0, y: -20, duration: 0.5, ease: 'power2.out' })
+        .add(() => preloaderIcon.remove())
+        .to(preloaderBg, { opacity: 0, duration: 0.8, ease: 'power2.out' }, '<')
+        .to(preloaderLogo, {
+          top: dock.top,
+          width: dock.width,
+          yPercent: 0,
+          duration: 1,
+          ease: 'power3.inOut',
+        }, '<')
+        .add(() => {
+          preloaderBg.remove();
+          document.documentElement.style.overflow = '';
 
-            // Convert from viewport-fixed to hero-relative so it scrolls away with the hero
-            const heroRect = heroSection.getBoundingClientRect();
-            const finalLogoRect = preloaderLogo.getBoundingClientRect();
-            preloaderLogo.style.position = 'absolute';
-            preloaderLogo.style.top = `${finalLogoRect.top - heroRect.top}px`;
-            preloaderLogo.style.left = `${finalLogoRect.left - heroRect.left + finalLogoRect.width / 2}px`;
-            preloaderLogo.style.transform = 'translate(-50%, 0)';
-            preloaderLogo.style.zIndex = '20';
-            heroSection.prepend(preloaderLogo);
-          });
-      });
+          // Convert from viewport-fixed to hero-relative so it scrolls away with the hero
+          const heroRect = heroSection.getBoundingClientRect();
+          const finalLogoRect = preloaderLogo.getBoundingClientRect();
+          preloaderLogo.style.position = 'absolute';
+          preloaderLogo.style.top = `${finalLogoRect.top - heroRect.top}px`;
+          preloaderLogo.style.left = `${finalLogoRect.left - heroRect.left + finalLogoRect.width / 2}px`;
+          preloaderLogo.style.transform = 'translate(-50%, 0)';
+          preloaderLogo.style.zIndex = '20';
+          heroSection.prepend(preloaderLogo);
+        });
     }
   }
 

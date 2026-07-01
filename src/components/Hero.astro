@@ -1,5 +1,8 @@
 ---
-import aerialPoster from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+import { getImage } from 'astro:assets';
+import aerialPosterSrc from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+
+const aerialPoster = await getImage({ src: aerialPosterSrc, width: 1920, format: 'webp', quality: 70 });
 
 interface Props {
   headline: string;
@@ -26,6 +29,7 @@ const {
     class="absolute inset-0 w-full h-full object-cover"
     autoplay muted loop playsinline
     poster={aerialPoster.src}
+    fetchpriority="high"
     preload="none"
     aria-hidden="true"
   >
