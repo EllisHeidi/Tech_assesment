@@ -134,10 +134,12 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
           <!-- Details -->
           <div class={i % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}>
             <p class="label mb-2" style="color:#D27A29;">Unit Type</p>
-            <h2 class="mb-2" style="font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,5vw,4.5rem); color:#111; line-height:1;">
-              Type {u.type}
-            </h2>
-            <p class="text-3xl font-medium mb-8" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{fmt(u.price)}</p>
+            <div class="flex justify-between items-end mb-8 gap-4">
+              <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,5vw,4.5rem); color:#111; line-height:1;">
+                Type {u.type}
+              </h2>
+              <p class="text-3xl font-medium" style="font-family:'Cormorant Garamond',serif; color:#D27A29;">{fmt(u.price)}</p>
+            </div>
 
             <!-- Specs row -->
             <div class="flex flex-wrap gap-x-6 gap-y-3 mb-8 pb-8" style="border-bottom:1px solid rgba(0,0,0,0.1);">
