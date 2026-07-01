@@ -124,8 +124,8 @@ import living   from '../assets/images/Still Renders/3D 14 - Living Room Interna
 
         <!-- Success state -->
         <div id="success-msg" class="hidden mt-8 py-10 text-center" style="border:1px solid rgba(0,0,0,0.1);">
-          <p class="text-3xl mb-2" style="font-family:'Cormorant Garamond',serif; color:#111;">Message Received</p>
-          <p class="text-sm" style="color:#8A8A8A;">We'll be in touch within 24 hours.</p>
+          <p class="text-3xl mb-2" style="font-family:'Cormorant Garamond',serif; color:#111;">Almost There</p>
+          <p class="text-sm" style="color:#8A8A8A;">Your email app should have opened with your message pre-filled — just hit send.</p>
         </div>
       </div>
     </div>
@@ -145,6 +145,29 @@ import living   from '../assets/images/Still Renders/3D 14 - Living Room Interna
     e.preventDefault();
     btn.textContent = 'Sending…';
     btn.disabled = true;
+
+    const data = new FormData(form);
+    const name     = String(data.get('name') ?? '');
+    const phone    = String(data.get('phone') ?? '');
+    const email    = String(data.get('email') ?? '');
+    const interest = String(data.get('interest') ?? '');
+    const message  = String(data.get('message') ?? '');
+
+    const bodyLines = [
+      `Name: ${name}`,
+      phone ? `Phone: ${phone}` : null,
+      email ? `Email: ${email}` : null,
+      interest ? `Interested In: ${interest}` : null,
+      '',
+      message,
+    ].filter((line) => line !== null);
+
+    const subject = encodeURIComponent(`Kingsley Village Enquiry — ${name}`);
+    const body    = encodeURIComponent(bodyLines.join('\n'));
+    const mailto  = `mailto:kevin@nichedevelopments.co.za?subject=${subject}&body=${body}`;
+
+    window.location.href = mailto;
+
     setTimeout(() => {
       form.style.display = 'none';
       success.classList.remove('hidden');
