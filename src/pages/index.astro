@@ -372,54 +372,71 @@ const base = import.meta.env.BASE_URL;
   const heroSection   = document.getElementById('hero');
 
   if (preloaderBg && preloaderIcon && preloaderLogo && heroSection) {
-    gsap.set(preloaderLogo, { xPercent: -50, yPercent: -50 });
-    gsap.set(preloaderIcon, { xPercent: -50 });
-
-    // Sit the icon just above the wordmark, as a lockup
-    const logoRect = preloaderLogo.getBoundingClientRect();
-    const iconHeight = preloaderIcon.getBoundingClientRect().height;
-    const gap = 24;
-    preloaderIcon.style.top = `${logoRect.top - iconHeight - gap}px`;
-
-    document.documentElement.style.overflow = 'hidden';
-
     // Dock size/position scales down for smaller viewports
     const getDockTarget = () => {
       const vw = window.innerWidth;
       if (vw < 640)  return { top: 150, width: Math.min(vw * 0.6, 220) };
       if (vw < 1024) return { top: 150, width: Math.min(vw * 0.45, 380) };
-      return { top: 140, width: 420 };
+      return { top: 140, width: 540 };
     };
 
-    window.addEventListener('load', () => {
-      const tl = gsap.timeline({ delay: 0.6 });
+    // Only play the splash once per browser session — internal nav (e.g.
+    // clicking "Home" from another page) shouldn't replay it every time.
+    const SPLASH_KEY = 'kingsley-splash-shown';
+    if (sessionStorage.getItem(SPLASH_KEY)) {
       const dock = getDockTarget();
+      preloaderIcon.remove();
+      preloaderBg.remove();
+      preloaderLogo.style.position = 'absolute';
+      preloaderLogo.style.top = `${dock.top}px`;
+      preloaderLogo.style.left = '50%';
+      preloaderLogo.style.width = `${dock.width}px`;
+      preloaderLogo.style.transform = 'translate(-50%, 0)';
+      preloaderLogo.style.zIndex = '20';
+      heroSection.prepend(preloaderLogo);
+    } else {
+      sessionStorage.setItem(SPLASH_KEY, '1');
+      gsap.set(preloaderLogo, { xPercent: -50, yPercent: -50 });
+      gsap.set(preloaderIcon, { xPercent: -50 });
 
-      tl.to(preloaderIcon, { opacity: 0, y: -20, duration: 0.5, ease: 'power2.out' })
-        .add(() => preloaderIcon.remove())
-        .to(preloaderBg, { opacity: 0, duration: 0.8, ease: 'power2.out' }, '<')
-        .to(preloaderLogo, {
-          top: dock.top,
-          width: dock.width,
-          yPercent: 0,
-          duration: 1,
-          ease: 'power3.inOut',
-        }, '<')
-        .add(() => {
-          preloaderBg.remove();
-          document.documentElement.style.overflow = '';
+      // Sit the icon just above the wordmark, as a lockup
+      const logoRect = preloaderLogo.getBoundingClientRect();
+      const iconHeight = preloaderIcon.getBoundingClientRect().height;
+      const gap = 24;
+      preloaderIcon.style.top = `${logoRect.top - iconHeight - gap}px`;
 
-          // Convert from viewport-fixed to hero-relative so it scrolls away with the hero
-          const heroRect = heroSection.getBoundingClientRect();
-          const finalLogoRect = preloaderLogo.getBoundingClientRect();
-          preloaderLogo.style.position = 'absolute';
-          preloaderLogo.style.top = `${finalLogoRect.top - heroRect.top}px`;
-          preloaderLogo.style.left = `${finalLogoRect.left - heroRect.left + finalLogoRect.width / 2}px`;
-          preloaderLogo.style.transform = 'translate(-50%, 0)';
-          preloaderLogo.style.zIndex = '20';
-          heroSection.prepend(preloaderLogo);
-        });
-    });
+      document.documentElement.style.overflow = 'hidden';
+
+      window.addEventListener('load', () => {
+        const tl = gsap.timeline({ delay: 0.6 });
+        const dock = getDockTarget();
+
+        tl.to(preloaderIcon, { opacity: 0, y: -20, duration: 0.5, ease: 'power2.out' })
+          .add(() => preloaderIcon.remove())
+          .to(preloaderBg, { opacity: 0, duration: 0.8, ease: 'power2.out' }, '<')
+          .to(preloaderLogo, {
+            top: dock.top,
+            width: dock.width,
+            yPercent: 0,
+            duration: 1,
+            ease: 'power3.inOut',
+          }, '<')
+          .add(() => {
+            preloaderBg.remove();
+            document.documentElement.style.overflow = '';
+
+            // Convert from viewport-fixed to hero-relative so it scrolls away with the hero
+            const heroRect = heroSection.getBoundingClientRect();
+            const finalLogoRect = preloaderLogo.getBoundingClientRect();
+            preloaderLogo.style.position = 'absolute';
+            preloaderLogo.style.top = `${finalLogoRect.top - heroRect.top}px`;
+            preloaderLogo.style.left = `${finalLogoRect.left - heroRect.left + finalLogoRect.width / 2}px`;
+            preloaderLogo.style.transform = 'translate(-50%, 0)';
+            preloaderLogo.style.zIndex = '20';
+            heroSection.prepend(preloaderLogo);
+          });
+      });
+    }
   }
 
   // Generic reveal-on-scroll for all reveal classes
