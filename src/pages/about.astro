@@ -126,22 +126,40 @@ const process = [
         </h2>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="reveal-left">
-          <Image
-            src={living}
-            alt="Open-plan kitchen and living with marble island"
-            class="w-full aspect-video object-cover"
-            widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
-          />
+        <div class="reveal-left group relative overflow-hidden" style="background:rgba(0,0,0,0.2);">
+          <video
+            class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+            muted loop playsinline preload="none"
+            poster={living.src}
+            onmouseenter="this.play()"
+            onmouseleave="this.pause()"
+            onclick="this.paused ? this.play() : this.pause()"
+          >
+            <source src="https://res.cloudinary.com/dc60tljo7/video/upload/v1782643149/Clip_04_-_Living_Room_View_nb8xpq.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-70 group-hover:opacity-0 transition-opacity">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.15); backdrop-filter:blur(4px);">
+              <svg class="w-5 h-5 ml-0.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/></svg>
+            </div>
+          </div>
           <p class="text-xs tracking-widest uppercase mt-4" style="color:#8A8A8A;">Open-Plan Living & Kitchen</p>
         </div>
-        <div class="reveal-right lg:mt-12">
-          <Image
-            src={bedroom}
-            alt="Master bedroom with natural light and built-in wardrobes"
-            class="w-full aspect-video object-cover"
-            widths={[700,1000]} sizes="(max-width:1024px) 100vw, 50vw"
-          />
+        <div class="reveal-right lg:mt-12 group relative overflow-hidden" style="background:rgba(0,0,0,0.2);">
+          <video
+            class="w-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+            muted loop playsinline preload="none"
+            poster={bedroom.src}
+            onmouseenter="this.play()"
+            onmouseleave="this.pause()"
+            onclick="this.paused ? this.play() : this.pause()"
+          >
+            <source src="https://res.cloudinary.com/dc60tljo7/video/upload/v1782643144/Clip_05_-_Bedrrom_View_e47ir9.mp4" type="video/mp4" />
+          </video>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-70 group-hover:opacity-0 transition-opacity">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.15); backdrop-filter:blur(4px);">
+              <svg class="w-5 h-5 ml-0.5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/></svg>
+            </div>
+          </div>
           <p class="text-xs tracking-widest uppercase mt-4" style="color:#8A8A8A;">Master Bedroom Suite</p>
         </div>
       </div>

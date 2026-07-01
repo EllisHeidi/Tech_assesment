@@ -1,5 +1,6 @@
 ---
-import logoGold from '../assets/logos/PNG/Asset 44@4x.png';
+import logoIcon from '../assets/logos/PNG/Asset 29@4x.png';
+import logoWordmark from '../assets/logos/PNG/Asset 37@4x.png';
 const year = new Date().getFullYear();
 const base = import.meta.env.BASE_URL;
 ---
@@ -14,8 +15,9 @@ const base = import.meta.env.BASE_URL;
 
       <!-- Brand -->
       <div class="max-w-sm">
-        <a href={base}>
-          <img src={logoGold.src} alt="Kingsley Village" class="h-12 w-auto mb-8" />
+        <a href={base} class="flex items-center gap-3 mb-8">
+          <img src={logoIcon.src} alt="" aria-hidden="true" class="h-10 w-auto translate-y-1" />
+          <img src={logoWordmark.src} alt="Kingsley Village" class="h-12 w-auto" />
         </a>
         <p class="text-sm leading-relaxed mb-7" style="color: rgba(255,255,255,0.55); max-width: 32ch;">
           49 luxury sectional title homes on South Africa's KZN North Coast. Secure estate living from R2.25M.

@@ -18,49 +18,56 @@ import bedroom   from '../assets/images/Still Renders/3D 15 - Bedroom Internal -
 import sitePlan  from '../assets/images/Marketing Plans/Site Plan.jpg';
 
 const base = import.meta.env.BASE_URL;
+const pdfA = encodeURI(`${base}assets/images/Marketing Plans/Unit Type A.pdf`);
+const pdfB = encodeURI(`${base}assets/images/Marketing Plans/Unit Type B.pdf`);
+const pdfC = encodeURI(`${base}assets/images/Marketing Plans/Unit Type C.pdf`);
+const pdfD = encodeURI(`${base}assets/images/Marketing Plans/Unit Type D.pdf`);
+const pdfE = encodeURI(`${base}assets/images/Marketing Plans/Unit Type E.pdf`);
+const pdfF = encodeURI(`${base}assets/images/Marketing Plans/Unit Type F.pdf`);
+const pdfG = encodeURI(`${base}assets/images/Marketing Plans/Unit Type G.pdf`);
 const units = [
   {
     type:'A', beds:3, baths:2, garages:1, size:130, price:2_250_000,
     img: renderA, img2: renderA2,
     features:['Master ensuite','Open-plan living & dining','Covered patio','Private garden','Single garage'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type A.pdf`,
+    pdf: pdfA,
   },
   {
     type:'B', beds:3, baths:2, garages:2, size:155, price:2_750_000,
     img: renderB, img2: renderB2,
     features:['Double garage','Scullery','Master ensuite','Guest bathroom','Larger covered patio'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type B.pdf`,
+    pdf: pdfB,
     featured: true,
   },
   {
     type:'C', beds:3, baths:2, garages:1, size:140, price:2_500_000,
     img: renderCD, img2: renderCD2,
     features:['Corner unit position','Master ensuite','Courtyard garden','Open-plan kitchen','Single garage'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type C.pdf`,
+    pdf: pdfC,
   },
   {
     type:'D', beds:4, baths:3, garages:2, size:195, price:3_350_000,
     img: renderCD, img2: renderCD2,
     features:['4 bedrooms','Study nook','Scullery & pantry','Courtyard entertainment','2 en-suites'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type D.pdf`,
+    pdf: pdfD,
   },
   {
     type:'E', beds:3, baths:2, garages:1, size:148, price:2_550_000,
     img: renderE, img2: renderE,
     features:['End unit','Extra side yard','Master ensuite','Open kitchen with island','Garden room'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type E.pdf`,
+    pdf: pdfE,
   },
   {
     type:'F', beds:3, baths:2, garages:2, size:165, price:2_950_000,
     img: renderF, img2: renderF,
     features:['Double garage','Optional study/4th bed','Scullery','Large covered patio','Landscaped garden'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type F.pdf`,
+    pdf: pdfF,
   },
   {
     type:'G', beds:4, baths:3, garages:2, size:200, price:3_500_000,
     img: renderG, img2: renderG,
     features:['Largest unit type','Premium specification','3 full bathrooms','Chef kitchen layout','Entertainment deck'],
-    pdf:`${base}assets/images/Marketing Plans/Unit Type G.pdf`,
+    pdf: pdfG,
   },
 ];
 
@@ -126,11 +133,6 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
 
           <!-- Details -->
           <div class={i % 2 === 0 ? 'order-2' : 'order-2 lg:order-1'}>
-            {u.featured && (
-              <span class="inline-block text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5 mb-4" style="background:#D27A29; color:white;">
-                Most Popular
-              </span>
-            )}
             <p class="label mb-2" style="color:#D27A29;">Unit Type</p>
             <h2 class="mb-2" style="font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,5vw,4.5rem); color:#111; line-height:1;">
               Type {u.type}
@@ -256,7 +258,7 @@ const fmt = (p: number) => `R${(p/1_000_000).toFixed(2)}M`;
           onmouseleave="this.pause()"
           onclick="this.paused ? this.play() : this.pause()"
         >
-          <source src="/videos/Clip 05 - Bedrrom View.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dc60tljo7/video/upload/v1782643144/Clip_05_-_Bedrrom_View_e47ir9.mp4" type="video/mp4" />
         </video>
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-70 group-hover:opacity-0 transition-opacity">
           <div class="w-12 h-12 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.15); backdrop-filter:blur(4px);">

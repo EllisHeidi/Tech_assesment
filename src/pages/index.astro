@@ -17,11 +17,35 @@ import beachCouple  from '../assets/images/Kingsley Website Images/reed-naliboff
 import surfer       from '../assets/images/Kingsley Website Images/michiel-annaert-fQEbXEPDYOE-unsplash.jpg';
 import whales       from '../assets/images/Kingsley Website Images/guille-pozzi-PO0UHx-5mHo-unsplash.jpg';
 import aerial       from '../assets/images/Still Renders/3D 01 - Aerial Render.jpg';
+import brandLogo    from '../assets/logos/PNG/Asset 43@4x.png';
+import brandIcon    from '../assets/logos/PNG/Asset 29@4x.png';
 
 const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Kingsley Village — Coastal Living, Palm Lakes">
+  <!-- ── Preloader ──────────────────────────────────────────── -->
+  <div id="preloader-bg" class="fixed inset-0 z-[999]" style="background:#F8F7F4;"></div>
+  <Image
+    id="preloader-icon"
+    src={brandIcon}
+    alt=""
+    aria-hidden="true"
+    class="fixed z-[1000] w-20 sm:w-24 md:w-28 h-auto"
+    style="left:50%;"
+    widths={[200, 400]}
+    sizes="150px"
+  />
+  <Image
+    id="preloader-logo"
+    src={brandLogo}
+    alt="Kingsley Palm Lakes"
+    class="fixed z-[1000] w-[85vw] max-w-3xl sm:max-w-4xl h-auto"
+    style="top:50%; left:50%;"
+    widths={[800, 1200, 1920]}
+    sizes="900px"
+  />
+
   <Nav />
   <Hero
     headline="Coastal Living, Redefined."
@@ -154,16 +178,11 @@ const base = import.meta.env.BASE_URL;
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           { title: 'Type A', beds:3, baths:2, garages:1, size:130, price:'R2.25M', img: unitArender, alt:'Type A exterior render' },
-          { title: 'Type B', beds:3, baths:2, garages:2, size:155, price:'R2.75M', img: unitBrender, alt:'Type B exterior render', featured:true },
+          { title: 'Type B', beds:3, baths:2, garages:2, size:155, price:'R2.75M', img: unitBrender, alt:'Type B exterior render' },
           { title: 'Type C & D', beds:3, baths:2, garages:1, size:140, price:'From R2.5M', img: unitCDrender, alt:'Type C and D exterior render' },
         ].map(u => (
           <article class="reveal group">
             <div class="overflow-hidden mb-4 relative">
-              {u.featured && (
-                <span class="absolute top-4 left-4 z-10 text-[10px] font-semibold tracking-widest uppercase px-3 py-1.5" style="background:#D27A29; color:white;">
-                  Most Popular
-                </span>
-              )}
               <Image
                 src={u.img}
                 alt={u.alt}
@@ -345,6 +364,63 @@ const base = import.meta.env.BASE_URL;
   import { gsap } from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
+
+  // Preloader — hold briefly on load, fade the icon + backdrop, then dock the logo into the hero
+  const preloaderBg   = document.getElementById('preloader-bg');
+  const preloaderIcon = document.getElementById('preloader-icon') as HTMLImageElement | null;
+  const preloaderLogo = document.getElementById('preloader-logo') as HTMLImageElement | null;
+  const heroSection   = document.getElementById('hero');
+
+  if (preloaderBg && preloaderIcon && preloaderLogo && heroSection) {
+    gsap.set(preloaderLogo, { xPercent: -50, yPercent: -50 });
+    gsap.set(preloaderIcon, { xPercent: -50 });
+
+    // Sit the icon just above the wordmark, as a lockup
+    const logoRect = preloaderLogo.getBoundingClientRect();
+    const iconHeight = preloaderIcon.getBoundingClientRect().height;
+    const gap = 24;
+    preloaderIcon.style.top = `${logoRect.top - iconHeight - gap}px`;
+
+    document.documentElement.style.overflow = 'hidden';
+
+    // Dock size/position scales down for smaller viewports
+    const getDockTarget = () => {
+      const vw = window.innerWidth;
+      if (vw < 640)  return { top: 150, width: Math.min(vw * 0.6, 220) };
+      if (vw < 1024) return { top: 150, width: Math.min(vw * 0.45, 380) };
+      return { top: 220, width: 680 };
+    };
+
+    window.addEventListener('load', () => {
+      const tl = gsap.timeline({ delay: 0.6 });
+      const dock = getDockTarget();
+
+      tl.to(preloaderIcon, { opacity: 0, y: -20, duration: 0.5, ease: 'power2.out' })
+        .add(() => preloaderIcon.remove())
+        .to(preloaderBg, { opacity: 0, duration: 0.8, ease: 'power2.out' }, '<')
+        .to(preloaderLogo, {
+          top: dock.top,
+          width: dock.width,
+          yPercent: 0,
+          duration: 1,
+          ease: 'power3.inOut',
+        }, '<')
+        .add(() => {
+          preloaderBg.remove();
+          document.documentElement.style.overflow = '';
+
+          // Convert from viewport-fixed to hero-relative so it scrolls away with the hero
+          const heroRect = heroSection.getBoundingClientRect();
+          const finalLogoRect = preloaderLogo.getBoundingClientRect();
+          preloaderLogo.style.position = 'absolute';
+          preloaderLogo.style.top = `${finalLogoRect.top - heroRect.top}px`;
+          preloaderLogo.style.left = `${finalLogoRect.left - heroRect.left + finalLogoRect.width / 2}px`;
+          preloaderLogo.style.transform = 'translate(-50%, 0)';
+          preloaderLogo.style.zIndex = '20';
+          heroSection.prepend(preloaderLogo);
+        });
+    });
+  }
 
   // Generic reveal-on-scroll for all reveal classes
   const revealClasses = ['.reveal', '.reveal-left', '.reveal-right', '.reveal-scale', '.reveal-fade'];
